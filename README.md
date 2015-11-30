@@ -1,2 +1,1 @@
-# plugins
-Plugins and shell script for integrating 3rd party tools with FileBot
+Plugins and shell scripts for integrating 3rd party tools with FileBot
