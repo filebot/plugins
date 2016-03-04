@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # Input Parameters
-export OPT_PATH="$NZBPP_DIRECTORY"
-export OPT_NAME="$NZBPP_NZBNAME"
-export OPT_LABEL="$NZBPP_CATEGORY"
+ARG_PATH="$NZBPP_DIRECTORY"
+ARG_NAME="$NZBPP_NZBNAME"
+ARG_LABEL="$NZBPP_CATEGORY"
 
 # Configuration
-export CONF_OUTPUT="$HOME/Media"
+CONFIG_OUTPUT="$HOME/Media"
 
-filebot -script fn:amc --output "$CONF_OUTPUT" --action duplicate --conflict skip -non-strict --log-file amc.log --def unsorted=y music=y artwork=y excludeList=".excludes" ut_dir="$OPT_PATH" ut_kind="multi" ut_title="$OPT_NAME" ut_label="$OPT_LABEL"
+filebot -script fn:amc --output "$CONFIG_OUTPUT" --action duplicate --conflict skip -non-strict --log-file amc.log --def unsorted=y music=y artwork=y excludeList=".excludes" ut_dir="$ARG_PATH" ut_kind="multi" ut_title="$ARG_NAME" ut_label="$ARG_LABEL"
 
 # NZBGet Exit Codes
 if [ $? = 0 ]; then
