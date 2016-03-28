@@ -5,11 +5,4 @@
   "script" : "var script = JD_HOME + '/jdownloader-postprocess.sh'\n\nvar path = package.getDownloadFolder()\nvar name = package.getName()\nvar label = package.getComment() ? package.getComment() : 'N/A'\n\nvar command = [script, path, name, label, 'PACKAGE_FINISHED']\n\nlog(command)\nlog(callSync(command))\n",
   "eventTriggerSettings" : {
   }
-}, {
-  "eventTrigger" : "ON_ARCHIVE_EXTRACTED",
-  "enabled" : true,
-  "name" : "Execute FileBot (ArchiveExtracted)",
-  "script" : "var script = JD_HOME + '/jdownloader-postprocess.sh'\n\nvar path = archive.getFolder()\nvar name = archive.getName()\nvar label = archive.getDownloadLinks() && archive.getDownloadLinks()[0].getPackage().getComment() ? archive.getDownloadLinks()[0].getPackage().getComment() : 'N/A'\n\nvar command = [script, path, name, label, 'ARCHIVE_EXTRACTED']\n\nlog(command)\nlog(callSync(command))",
-  "eventTriggerSettings" : {
-  }
 } ]
