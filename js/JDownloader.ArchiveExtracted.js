@@ -4,11 +4,11 @@ var path = archive.getFolder()
 var name = archive.getName()
 var links = archive.getDownloadLinks() ? archive.getDownloadLinks() : []
 var package = links.length > 0 ? links[0].getPackage() : null
-var label = package.getComment() ? package.getComment() : 'N/A'
+var label = package && package.getComment() ? package.getComment() : 'N/A'
 
 function isReallyFinished() {
 	for (var i = 0; i < links.length; i++) {
-		if (links[i].getArchive() != null && links[i].getExtractionStatus() != "SUCCESSFUL" || !package.isFinished()) {
+		if (links[i].getArchive() != null && links[i].getExtractionStatus() != "SUCCESSFUL" || package && !package.isFinished()) {
 			return false
 		}
 	}
