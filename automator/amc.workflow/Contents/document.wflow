@@ -21,33 +21,26 @@
 					<true/>
 					<key>Types</key>
 					<array>
-						<string>*</string>
+						<string>com.apple.cocoa.string</string>
 					</array>
 				</dict>
 				<key>AMActionVersion</key>
-				<string>2.0.1</string>
+				<string>2.0.3</string>
 				<key>AMApplication</key>
 				<array>
 					<string>Automator</string>
 				</array>
 				<key>AMParameterProperties</key>
 				<dict>
-					<key>batchItems</key>
+					<key>COMMAND_STRING</key>
 					<dict/>
-					<key>documentPath</key>
-					<dict>
-						<key>isPathPopUp</key>
-						<true/>
-						<key>variableUUIDsInMenu</key>
-						<array/>
-					</dict>
-					<key>itemsBatchSize</key>
+					<key>CheckedForUserDefaultShell</key>
 					<dict/>
-					<key>numberOfWorkflows</key>
+					<key>inputMethod</key>
 					<dict/>
-					<key>returnWorkflowOutput</key>
+					<key>shell</key>
 					<dict/>
-					<key>waitForWorkflow</key>
+					<key>source</key>
 					<dict/>
 				</dict>
 				<key>AMProvides</key>
@@ -56,34 +49,32 @@
 					<string>List</string>
 					<key>Types</key>
 					<array>
-						<string>*</string>
+						<string>com.apple.cocoa.string</string>
 					</array>
 				</dict>
 				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Run Workflow.action</string>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
 				<key>ActionName</key>
-				<string>Run Workflow</string>
+				<string>Run Shell Script</string>
 				<key>ActionParameters</key>
 				<dict>
-					<key>batchItems</key>
-					<false/>
-					<key>documentPath</key>
-					<string>~/Development/filebot-plugins/automator/amc.workflow</string>
-					<key>itemsBatchSize</key>
-					<integer>1</integer>
-					<key>numberOfWorkflows</key>
+					<key>COMMAND_STRING</key>
+					<string>/usr/local/bin/filebot -script fn:amc --output "$HOME/Media" --action duplicate --conflict skip -non-strict --log-file amc.log --def excludeList=".excludes" unsorted=y music=y artwork=y "$@"</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
 					<integer>0</integer>
-					<key>returnWorkflowOutput</key>
-					<true/>
-					<key>waitForWorkflow</key>
-					<true/>
+					<key>shell</key>
+					<string>/bin/bash</string>
+					<key>source</key>
+					<string></string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.ExecuteWorkflow</string>
+				<string>com.apple.RunShellScript</string>
 				<key>CFBundleVersion</key>
-				<string>2.0.1</string>
+				<string>2.0.3</string>
 				<key>CanShowSelectedItemsWhenRun</key>
-				<true/>
+				<false/>
 				<key>CanShowWhenRun</key>
 				<true/>
 				<key>Category</key>
@@ -91,15 +82,21 @@
 					<string>AMCategoryUtilities</string>
 				</array>
 				<key>Class Name</key>
-				<string>ExecuteWorkflow</string>
+				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>0ADE35F4-BFA1-439B-9BD4-64FEF022FEC0</string>
+				<string>05D7E8FA-31FE-4AD1-AEC1-0A74228AEB07</string>
 				<key>Keywords</key>
-				<array/>
+				<array>
+					<string>Shell</string>
+					<string>Script</string>
+					<string>Command</string>
+					<string>Run</string>
+					<string>Unix</string>
+				</array>
 				<key>OutputUUID</key>
-				<string>583D861F-6764-445E-8B85-BCB3421EFCA0</string>
+				<string>122C7D27-E55E-48B7-AD06-A298619C1624</string>
 				<key>UUID</key>
-				<string>6AA7DEF6-03F1-475E-B1A9-DB980C4A4035</string>
+				<string>AD75F78A-CC04-4F30-9F0B-F31CA72EAB19</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -109,9 +106,9 @@
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<integer>1</integer>
+						<integer>0</integer>
 						<key>name</key>
-						<string>itemsBatchSize</string>
+						<string>inputMethod</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -122,9 +119,9 @@
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<true/>
+						<string></string>
 						<key>name</key>
-						<string>waitForWorkflow</string>
+						<string>source</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -135,9 +132,9 @@
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<integer>0</integer>
+						<false/>
 						<key>name</key>
-						<string>numberOfWorkflows</string>
+						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -148,9 +145,9 @@
 					<key>3</key>
 					<dict>
 						<key>default value</key>
-						<false/>
+						<string></string>
 						<key>name</key>
-						<string>batchItems</string>
+						<string>COMMAND_STRING</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -161,9 +158,9 @@
 					<key>4</key>
 					<dict>
 						<key>default value</key>
-						<true/>
+						<string>/bin/sh</string>
 						<key>name</key>
-						<string>returnWorkflowOutput</string>
+						<string>shell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -171,28 +168,13 @@
 						<key>uuid</key>
 						<string>4</string>
 					</dict>
-					<key>5</key>
-					<dict>
-						<key>default value</key>
-						<string></string>
-						<key>name</key>
-						<string>documentPath</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>5</string>
-					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:189.000000</string>
+				<string>309.000000:185.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run Workflow.action/Contents/Resources/Base.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
