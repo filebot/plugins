@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Input Parameters
-ARG_PATH="$3"
+ARG_PATH="$3$2"
 ARG_NAME="$2"
 ARG_LABEL="N/A"
 
