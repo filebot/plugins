@@ -1,7 +1,7 @@
 var script = JD_HOME + '/jdownloader-postprocess.sh'
 
-var links = archive.getDownloadLinks() ? archive.getDownloadLinks() : []
-var package = links.length > 0 ? links[0].getPackage() : null
+var package = archive.getDownloadLinks() ? archive.getDownloadLinks()[0].getPackage() : null
+var links = package ? package.getDownloadLinks() : []
 
 function isReallyFinished() {
 	for (var i = 0; i < links.length; i++) {
