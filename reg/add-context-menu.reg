@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Rename Episode\command]
+@="cmd /c filebot -rename -r \"%1\" --db TheTVDB -non-strict --log-file context.log"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\Rename Movie\command]
+@="cmd /c filebot -rename -r \"%1\" --db TheMovieDB -non-strict --log-file context.log"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Import to Video Library\command]
+@="cmd /c filebot -script fn:amc \"%1\" --output \"%%USERPROFILE%%\\Videos\" --action move -non-strict --log-file context.log --def artwork=n clean=y"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Fetch Artwork for TV Shows\command]
+@="cmd /c filebot -script fn:artwork.tvdb \"%1\" --log-file context.log"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Fetch Artwork for Movies\command]
+@="cmd /c filebot -script fn:artwork.tmdb \"%1\" --log-file context.log"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\Fetch Subtitles\command]
+@="cmd /c filebot -script fn:suball \"%1\" -non-strict --lang en --log-file context.log"
