@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -xu
 
 # Input Parameters
 ARG_PATH="$TR_TORRENT_DIR/$TR_TORRENT_NAME"

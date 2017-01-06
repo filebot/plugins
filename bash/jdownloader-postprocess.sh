@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -xu
 
 # org.jdownloader.extensions.eventscripter.EventScripterExtension.scripts.json
 # [{"eventTrigger":"ON_PACKAGE_FINISHED","enabled":true,"name":"Execute FileBot (PackageFinished)","script":"var script = JD_HOME + '/jdownloader-postprocess.sh'\n\nvar path = package.getDownloadFolder()\nvar name = package.getName()\nvar label = package.getComment() ? package.getComment() : 'N/A'\n\nvar command = [script, path, name, label, 'PACKAGE_FINISHED']\n\nlog(command)\nlog(callSync(command))\n","eventTriggerSettings":{}} ]

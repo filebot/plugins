@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -xu
 
 # Input Parameters
 ARG_PATH="$NZBPP_DIRECTORY"
