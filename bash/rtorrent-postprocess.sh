@@ -1,8 +1,5 @@
 #!/bin/sh -xu
 
-# rtorrent.rc
-# system.method.set_key=event.download.finished,filebot,"execute={rtorrent-postprocess.sh,$d.get_base_path=,$d.get_name=,$d.get_custom1=}"
-
 # Input Parameters
 ARG_PATH="$1"
 ARG_NAME="$2"
