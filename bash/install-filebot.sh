@@ -14,10 +14,10 @@ wget "https://github.com/filebot/filebot/raw/master/lib/native/linux-amd64/libme
 wget "https://github.com/filebot/filebot/raw/master/lib/native/linux-amd64/libzen.so"
 
 # Verify filebot.sh works
-$PWD/filebot.sh -script fn:sysinfo
+"$PWD/filebot.sh" -script fn:sysinfo
 
 # Link into default $PATH
-sudo ln -sf $PWD/filebot.sh /usr/local/bin/filebot
+sudo ln -sf "$PWD/filebot.sh" /usr/local/bin/filebot
 
 # Verify filebot command works
 filebot -version && echo "DONE"
