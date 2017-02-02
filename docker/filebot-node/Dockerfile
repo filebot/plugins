@@ -5,7 +5,7 @@ MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 WORKDIR /usr/local/filebot-node
 
 RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot-node/filebot-node-0.2.3/filebot-node-0.2.3-generic.tar.bz2" \
- && tar xvf *.tar.* \
+ && tar xf *.tar.* \
  && rm *.tar.*
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
