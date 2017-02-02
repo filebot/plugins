@@ -8,9 +8,9 @@ export FILEBOT_NODE_HTTP_PORT="5452"
 export FILEBOT_TASK_CMD="/usr/local/filebot-node/task"
 
 export FILEBOT_CMD="filebot"
-export FILEBOT_CMD_CWD="$PWD"
-export FILEBOT_CMD_UID=`id -u $USER`
-export FILEBOT_CMD_GID=`id -g $USER`
+export FILEBOT_CMD_CWD="/volume1"
+export FILEBOT_CMD_UID=`id -u`
+export FILEBOT_CMD_GID=`id -g`
 
 export FILEBOT_NODE_CLIENT="/usr/local/filebot-node/client"
 

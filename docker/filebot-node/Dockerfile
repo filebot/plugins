@@ -18,8 +18,6 @@ ENV FILEBOT_NODE_AUTH NONE
 
 EXPOSE 5452
 
-WORKDIR /volume1
-
 VOLUME ["/volume1"]
 
 ENTRYPOINT ["/usr/local/filebot-node/start"]
