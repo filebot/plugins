@@ -4,7 +4,7 @@ MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
 WORKDIR /usr/local/filebot-node
 
-RUN curl -L -O "https://sourceforge.net/projects/filebot/files/filebot-node/filebot-node-0.2.3/filebot-node-0.2.3-generic.tar.bz2" \
+RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot-node/filebot-node-0.2.3/filebot-node-0.2.3-generic.tar.bz2" \
  && tar xvf *.tar.* \
  && rm *.tar.*
 
@@ -19,6 +19,7 @@ ENV FILEBOT_NODE_AUTH NONE
 EXPOSE 5452
 
 WORKDIR /volume1
-VOLUME /volume1
+
+VOLUME ["/volume1"]
 
 ENTRYPOINT ["/usr/local/filebot-node/start"]
