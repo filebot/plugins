@@ -1,0 +1,6 @@
+#!/bin/sh -u
+
+inotifywait -m -r "$1" -e create -e moved_to --format '%w%f' | stdbuf -oL uniq | while read -r LINE; do
+    echo "inotify: $LINE"
+    filebot -script fn:amc --action duplicate --conflict auto -non-strict --log-file amc.log --def excludeList=".excludes" unsorted=y music=y artwork=y "$@"
+done
