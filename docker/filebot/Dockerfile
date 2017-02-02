@@ -2,7 +2,7 @@ FROM openjdk:8-jre
 
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
-RUN	curl -L -o FileBot.deb "https://app.filebot.net/download.php?type=deb&arch=amd64&version=4.7.7" \
+RUN curl -L -o FileBot.deb "https://app.filebot.net/download.php?type=deb&arch=amd64&version=4.7.7" \
  && dpkg -i *.deb \
  && rm *.deb
 
