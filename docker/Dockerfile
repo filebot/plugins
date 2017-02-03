@@ -12,6 +12,7 @@ RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot/FileBot_
 RUN apt-get update && apt-get install -y \
     mediainfo \
     libchromaprint-tools \
+    file \
     inotify-tools \
  && rm -rf /var/lib/apt/lists/*
 
