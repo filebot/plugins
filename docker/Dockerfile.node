@@ -1,0 +1,26 @@
+FROM rednoah/filebot
+
+MAINTAINER Reinhard Pointner <rednoah@filebot.net>
+
+ENV FILEBOT_NODE_VERSION=0.2.3
+
+WORKDIR /usr/local/filebot-node
+
+RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot-node/filebot-node-${FILEBOT_NODE_VERSION}/filebot-node-${FILEBOT_NODE_VERSION}-generic.tar.bz2" \
+ && tar xf *.tar.* \
+ && rm *.tar.* \
+ && find . -executable -type f -delete
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
+ && apt-get install -y nodejs \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY filebot-node /usr/bin/filebot-node
+
+ENV FILEBOT_NODE_AUTH NONE
+
+EXPOSE 5452
+
+VOLUME ["/volume1"]
+
+ENTRYPOINT ["/usr/bin/filebot-node"]

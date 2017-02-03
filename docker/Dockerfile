@@ -2,7 +2,9 @@ FROM openjdk:8-jre
 
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
-RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot/FileBot_4.7.7/filebot_4.7.7_amd64.deb" \
+ENV FILEBOT_VERSION=4.7.7
+
+RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot/FileBot_${FILEBOT_VERSION}/filebot_${FILEBOT_VERSION}_amd64.deb" \
  && dpkg -i *.deb \
  && rm *.deb
 
