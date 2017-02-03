@@ -11,6 +11,7 @@ RUN curl -sL -O "https://sourceforge.net/projects/filebot/files/filebot/FileBot_
 RUN apt-get update && apt-get install -y \
     mediainfo \
     libchromaprint-tools \
+    inotify-tools \
  && rm -rf /var/lib/apt/lists/*
 
 ENV HOME /data
@@ -18,6 +19,6 @@ ENV JAVA_OPTS "-DuseGVFS=false -Dapplication.deployment=docker -Dapplication.dir
 
 WORKDIR /data
 
-VOLUME ["/data"]
+VOLUME ["/data", "/volume1"]
 
 ENTRYPOINT ["filebot"]

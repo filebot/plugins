@@ -21,6 +21,4 @@ ENV FILEBOT_NODE_AUTH NONE
 
 EXPOSE 5452
 
-VOLUME ["/volume1"]
-
 ENTRYPOINT ["/usr/bin/filebot-node"]
