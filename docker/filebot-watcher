@@ -6,7 +6,7 @@ inotifywait -m "$1" -e create -e moved_to -e modify --exclude '/[.@]' --format '
 
 	# abort if the file has been modified while we were asleep
 	if [ `find "$FILE" -type f -newermt '2 seconds ago' -print -quit` ]; then
-		echo "File has been modified: $FILE"
+		echo "Modified: $FILE"
 		continue
 	fi
 
