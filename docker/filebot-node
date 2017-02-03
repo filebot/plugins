@@ -1,12 +1,9 @@
-#!/bin/sh
+#!/bin/sh -xu
 
 export FILEBOT_NODE_HOST="0.0.0.0" # bind to all interfaces
 
-export FILEBOT_NODE_HTTP="YES"
-export FILEBOT_NODE_HTTP_PORT="5452"
-
 export FILEBOT_CMD="filebot"
-export FILEBOT_CMD_CWD="/volume1"
+export FILEBOT_CMD_CWD="$DOCKER_VOLUME"
 export FILEBOT_CMD_UID=`id -u`
 export FILEBOT_CMD_GID=`id -g`
 

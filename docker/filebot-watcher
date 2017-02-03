@@ -1,4 +1,4 @@
-#!/bin/sh -u
+#!/bin/sh -xu
 
 inotifywait -m -r "$1" -e create -e moved_to --format '%w%f' | stdbuf -oL uniq | while read -r LINE; do
     echo "inotify: $LINE"
