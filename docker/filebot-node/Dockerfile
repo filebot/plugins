@@ -1,4 +1,4 @@
-FROM rednoah/filebot:filebot
+FROM rednoah/filebot
 
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
