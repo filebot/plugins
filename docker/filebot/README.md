@@ -12,7 +12,7 @@ FileBot docker images for filebot and filebot-node.
 
 `docker run -it -v /path/to/files:/volume1 -p 5452:5452 rednoah/filebot:node`
 
-Once the [FileBot Node Service](https://github.com/filebot/filebot-node) is running, you can access the  web interface via localhost:5452/filebot/.
+Once the [FileBot Node Service](https://github.com/filebot/filebot-node) is running, you can access the  web interface via http://localhost:5452/filebot/.
 
 
 ## filebot-watcher
