@@ -1,6 +1,6 @@
 # FileBot Docker
 
-FileBot docker images for `filebot` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile), `filebot-node` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile.node) and `filebot-watcher` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile.watcher).
+FileBot docker images for [`filebot` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile), [`filebot-node` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile.node) and [`filebot-watcher` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile.watcher).
 
 
 ## filebot
