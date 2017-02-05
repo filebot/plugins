@@ -8,7 +8,7 @@ FILEBOT_PACKAGE_URL=https://sourceforge.net/projects/filebot/files/filebot/FileB
 
 
 # Download latest portable package
-curl -sL -O "$FILEBOT_PACKAGE_URL"
+curl -L -O "$FILEBOT_PACKAGE_URL"
 
 # Check SHA-256 checksum
 echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check --strict || exit 1
