@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Service
+Name=FileBot
+ServiceTypes=KonqPopupMenu/Plugin
+Actions=Rename;Subtitles;Checksum
+MimeType=inode/directory;video/*;audio/*
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=FileBot
+
+[Desktop Action Rename]
+Name=Rename
+Exec=filebot --mode Rename %F
+
+[Desktop Action Subtitles]
+Name=Subtitles
+Exec=filebot --mode Subtitles %F
+
+[Desktop Action Checksum]
+Name=Checksum
+Exec=filebot --mode SFV %F
