@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh -xu
 
 PKG_NAME="FileBot_Subtitles_Installer.pkg"
 PKG_URL="https://app.filebot.net/files/$PKG_NAME"
