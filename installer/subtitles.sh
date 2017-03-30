@@ -6,7 +6,7 @@ PKG="/tmp/$PKG_NAME"
 APP="/Applications/FileBot Subtitles.app"
 
 function fetch {
-	curl --location --output "$1" --time-cond "$1" --retry 5 "$2"
+	curl --fail --location --output "$1" --time-cond "$1" --retry 5 "$2"
 }
 
 function verify {
