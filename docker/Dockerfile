@@ -2,12 +2,12 @@ FROM openjdk:8-jre
 
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
-ENV FILEBOT_VERSION 4.7.8
+ENV FILEBOT_VERSION 4.7.9
 
 
 WORKDIR /usr/share/filebot
 
-RUN FILEBOT_SHA256=c64026327cdd8b1e5e5932cef39d35e80932d527ec5c1c69b689313f7882e7b7 \
+RUN FILEBOT_SHA256=892723dcec8fe5385ec6665db9960e7c1a88e459a60525c02afb7f1195a50523 \
  && FILEBOT_PACKAGE=filebot_${FILEBOT_VERSION}_amd64.deb \
  && curl -L -O https://downloads.sourceforge.net/project/filebot/filebot/FileBot_$FILEBOT_VERSION/$FILEBOT_PACKAGE \
  && echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check --strict \
