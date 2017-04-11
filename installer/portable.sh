@@ -11,7 +11,7 @@ FILEBOT_PACKAGE_URL=https://downloads.sourceforge.net/project/filebot/filebot/Fi
 curl -L -O "$FILEBOT_PACKAGE_URL"
 
 # Check SHA-256 checksum
-echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check --strict || exit 1
+echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check || exit 1
 
 # Extract *.tar.xz archive
 tar xvf "$FILEBOT_PACKAGE"
