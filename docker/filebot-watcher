@@ -2,11 +2,8 @@
 
 inotifywait -m "$1" -e create -e moved_to -e modify --exclude '/[.@]' --format '%w%f' | stdbuf -oL uniq | while read -r FILE; do
 	# file may yield inode/x-empty for new files
-	sleep 2
-
-	# abort if the file has been modified while we were asleep
-	if [ `find "$FILE" -type f -newermt '2 seconds ago' -print -quit` ]; then
-		echo "Modified: $FILE"
+        if file --mime-type "$FILE" | egrep "inode/x-empty"; then
+        	echo "Empty file: $FILE"
 		continue
 	fi
 
