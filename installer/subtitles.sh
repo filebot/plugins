@@ -1,8 +1,7 @@
 #!/bin/sh -xu
 
-PKG_NAME="FileBot_Subtitles_Installer.pkg"
-PKG_URL="https://app.filebot.net/files/$PKG_NAME"
-PKG="/tmp/$PKG_NAME"
+PKG_URL="https://app.filebot.net/files/FileBot_Subtitles_Installer.pkg"
+PKG="/tmp/FileBot_Subtitles_Installer.pkg"
 APP="/Applications/FileBot Subtitles.app"
 
 function fetch {
