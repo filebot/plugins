@@ -1,6 +1,6 @@
 # FileBot Docker
 
-Docker images for [FileBot](http://www.filebot.net/).
+Docker images for [FileBot](https://www.filebot.net/).
 - [`filebot` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile)
 - [`filebot-node` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile.node)
 - [`filebot-watcher` (*Dockerfile*)](https://github.com/filebot/plugins/blob/master/docker/Dockerfile.watcher)
@@ -8,7 +8,7 @@ Docker images for [FileBot](http://www.filebot.net/).
 
 ## filebot
 
-The [`filebot`](http://www.filebot.net/cli.html) command-line tool.
+The [`filebot`](https://www.filebot.net/cli.html) command-line tool.
 
 ```
 docker run -it -v $PWD:/volume1 -v data:/data rednoah/filebot -script fn:sysinfo
