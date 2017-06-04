@@ -1,10 +1,10 @@
 #!/bin/sh -xu
 
 FILEBOT_VERSION=4.7.9
-FILEBOT_SHA256=2531bc67d3522b1db05870da2b72fff580ebfa5969655e75382ffe2c8dec6867
+FILEBOT_SHA256=2531bc67d3522b1db05870da2b72fff580ebfa5969655e75382ffe2c8dec6867a
 
 FILEBOT_PACKAGE=FileBot_$FILEBOT_VERSION-portable.tar.xz
-FILEBOT_PACKAGE_URL=https://downloads.sourceforge.net/project/filebot/filebot/FileBot_$FILEBOT_VERSION/$FILEBOT_PACKAGE
+FILEBOT_PACKAGE_URL=https://app.filebot.net/files/filebot/FileBot_$FILEBOT_VERSION/$FILEBOT_PACKAGE
 
 
 # Download latest portable package
