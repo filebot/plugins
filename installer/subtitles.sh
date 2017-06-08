@@ -1,6 +1,6 @@
 #!/bin/sh -xu
 
-PKG_URL="https://app.filebot.net/files/FileBot_Subtitles.pkg"
+PKG_URL="https://get.filebot.net/filebot/latest/FileBot_Subtitles.pkg"
 PKG="/tmp/FileBot_Subtitles.pkg"
 APP="/Applications/FileBot Subtitles.app"
 
