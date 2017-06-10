@@ -13,8 +13,5 @@ cask 'filebot' do
   zap delete: '~/Library/Preferences/net.filebot.ui.plist'
 
   depends_on formula: 'gpg'
-
-  caveats do
-    depends_on_java('8')
-  end
+  depends_on cask: 'java'
 end
