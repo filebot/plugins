@@ -9,7 +9,7 @@ FILEBOT_PACKAGE_KEY=4E402EBF7C3C6A71
 
 
 # initialize GnuPG
-gpg --recv-keys "$FILEBOT_PACKAGE_KEY"
+curl -fsSL https://raw.githubusercontent.com/filebot/filebot/master/installer/gpg/maintainer.pub | gpg --import
 
 # Download latest portable package
 curl -L -O "$FILEBOT_PACKAGE_URL"
