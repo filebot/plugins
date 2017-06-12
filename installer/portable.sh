@@ -6,10 +6,11 @@ FILEBOT_SHA256=8ade6995e33db309a9aead54bf0f06f70d29d99425278719748dbf62b479cd81
 FILEBOT_PACKAGE=FileBot_$FILEBOT_VERSION-portable.tar.xz.gpg
 FILEBOT_PACKAGE_URL=https://get.filebot.net/filebot/$FILEBOT_VERSION/$FILEBOT_PACKAGE
 FILEBOT_PACKAGE_KEY=4E402EBF7C3C6A71
+FILEBOT_PACKAGE_KEY_URL=https://raw.githubusercontent.com/filebot/filebot/master/installer/gpg/maintainer.pub
 
 
 # initialize GnuPG
-curl -fsSL https://raw.githubusercontent.com/filebot/filebot/master/installer/gpg/maintainer.pub | gpg --import
+curl -fsSL "$FILEBOT_PACKAGE_KEY_URL" | gpg --import
 
 # Download latest portable package
 curl -L -O "$FILEBOT_PACKAGE_URL"
