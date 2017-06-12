@@ -9,20 +9,20 @@ FILEBOT_PACKAGE_KEY=4E402EBF7C3C6A71
 FILEBOT_PACKAGE_KEY_URL=https://raw.githubusercontent.com/filebot/filebot/master/installer/gpg/maintainer.pub
 
 
-# initialize GnuPG
-curl -fsSL "$FILEBOT_PACKAGE_KEY_URL" | gpg --import
-
 # Download latest portable package
-curl -L -O "$FILEBOT_PACKAGE_URL"
+curl -o "$FILEBOT_PACKAGE" -z "$FILEBOT_PACKAGE" --retry 5 --location "$FILEBOT_PACKAGE_URL"
 
 # Check SHA-256 checksum
 echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check || exit 1
+
+# initialize GnuPG
+curl -fsSL "$FILEBOT_PACKAGE_KEY_URL" | gpg --import
 
 # verify GnuPG signature
 gpg --batch --yes --trusted-key "$FILEBOT_PACKAGE_KEY" --output "FileBot.tar.xz" --decrypt "$FILEBOT_PACKAGE" || exit 1
 
 # Extract *.tar.xz archive
-tar xvf "FileBot.tar.xz" && rm "FileBot.tar.xz" "$FILEBOT_PACKAGE"
+tar xvf "FileBot.tar.xz" && rm "FileBot.tar.xz"
 
 # Check if filebot.sh works
 "$PWD/filebot.sh" -script fn:sysinfo
