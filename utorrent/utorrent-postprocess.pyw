@@ -1,3 +1,7 @@
+# Run Program: 
+# "C:\path\to\utorrent-postprocess.pyw" "%L" "%S" "%N" "%K" "%F" "%D"
+
+
 import sys
 import subprocess
 
