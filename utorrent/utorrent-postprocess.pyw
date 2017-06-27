@@ -6,28 +6,38 @@ import subprocess
 output = 'X:/Media'
 
 
+# custom formats
+movieFormat  = '''{plex}'''
+seriesFormat = '''{plex}'''
+animeFormat  = '''{plex}'''
+musicFormat  = '''{plex}'''
+
+
 # required args
-label, state, title, kind, file, dir = sys.argv[1:7]
+label, state, title, kind, file, directory = sys.argv[1:7]
 
 
 command = [
 	'filebot', '-script', 'fn:amc',
 	'--output', output,
-	'--action', 'copy',
+	'--action', 'duplicate',
 	'--conflict', 'skip',
 	'-non-strict',
 	'--log-file', output + '/amc.log',
-
 	'--def',
 		'unsorted=y',
 		'music=y',
 		'artwork=y',
+		'movieFormat='  + movieFormat,
+		'seriesFormat=' + seriesFormat,
+		'animeFormat='  + animeFormat,
+		'musicFormat='  + musicFormat,
 		'ut_label=' + label,
 		'ut_state=' + state,
 		'ut_title=' + title,
-		'ut_kind=' + kind,
-		'ut_file=' + file,
-		'ut_dir=' + dir
+		'ut_kind='  + kind,
+		'ut_file='  + file,
+		'ut_dir='   + directory
 ]
 
 
