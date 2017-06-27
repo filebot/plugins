@@ -1,5 +1,8 @@
 # Run Program: 
 # "C:\path\to\utorrent-postprocess.pyw" "%L" "%S" "%N" "%K" "%F" "%D"
+#
+# Test with Console:
+# python "C:\path\to\utorrent-postprocess.pyw" "Movie" "5" "Avatar" "multi" "" "X:\Files\Avatar"
 
 
 import sys
