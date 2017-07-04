@@ -27,13 +27,6 @@ gpg --batch --yes --trusted-key "$FILEBOT_PACKAGE_KEY" --output "FileBot.tar.xz"
 tar xvf "FileBot.tar.xz" && rm "FileBot.tar.xz"
 
 
-# Exit here for fetch only tasks
-if [ "$1" = "fetch" ]; then
-	echo "Download complete: $FILEBOT_PACKAGE"
-	exit 0
-fi
-
-
 # Check if filebot.sh works
 "$PWD/filebot.sh" -script fn:sysinfo
 
