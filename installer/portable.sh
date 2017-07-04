@@ -1,10 +1,12 @@
 #!/bin/sh -xu
 
-FILEBOT_VERSION=4.7.10
-FILEBOT_SHA256=8ade6995e33db309a9aead54bf0f06f70d29d99425278719748dbf62b479cd81
+FILEBOT_VERSION=4.7.11
+FILEBOT_SHA256=0c593681eb214f8bdef2df0d32dc9f781a370fd21cd9974b69b9fa35d53c056f
 
-FILEBOT_PACKAGE=FileBot_$FILEBOT_VERSION-portable.tar.xz.gpg
-FILEBOT_PACKAGE_URL=https://get.filebot.net/filebot/$FILEBOT_VERSION/$FILEBOT_PACKAGE
+FILEBOT_PACKAGE=FileBot_4.7.11-portable-r5162-b20170704.tar.xz.gpg
+FILEBOT_PACKAGE_URL=http://get.filebot.net/filebot/latest/
+# FILEBOT_PACKAGE=FileBot_$FILEBOT_VERSION-portable.tar.xz.gpg
+# FILEBOT_PACKAGE_URL=https://get.filebot.net/filebot/$FILEBOT_VERSION/$FILEBOT_PACKAGE
 FILEBOT_PACKAGE_KEY=4E402EBF7C3C6A71
 FILEBOT_PACKAGE_KEY_URL=https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub
 
