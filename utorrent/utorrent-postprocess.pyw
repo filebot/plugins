@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 # Run Program: 
 # "C:\path\to\utorrent-postprocess.pyw" "%L" "%S" "%N" "%K" "%F" "%D"
 #
@@ -46,6 +49,14 @@ command = [
 		'ut_file='  + file,
 		'ut_dir='   + directory
 ]
+
+
+# execute command only in certain conditions
+'''
+if state not in ['5', '11']:
+	print('Illegal state: %s' % state)
+	sys.exit(0)
+'''
 
 
 # execute command (and hide cmd window)
