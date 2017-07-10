@@ -51,7 +51,7 @@ command = [
 ]
 
 
-# execute command only in certain conditions (disabled by default)
+# execute command only for certain conditions (disabled by default)
 '''
 if state not in ['5', '11']:
 	print('Illegal state: %s' % state)
