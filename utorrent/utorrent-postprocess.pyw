@@ -16,7 +16,7 @@ import subprocess
 output = 'X:/Media'
 
 
-# custom formats
+# custom formats (use / instead of \ as directory separator)
 movieFormat  = '''{plex}'''
 seriesFormat = '''{plex}'''
 animeFormat  = '''{plex}'''
@@ -51,7 +51,7 @@ command = [
 ]
 
 
-# execute command only in certain conditions
+# execute command only in certain conditions (disabled by default)
 '''
 if state not in ['5', '11']:
 	print('Illegal state: %s' % state)
