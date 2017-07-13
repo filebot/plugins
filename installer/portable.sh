@@ -32,6 +32,7 @@ tar xvf "FileBot.tar.xz" && rm "FileBot.tar.xz"
 
 # Link into default $PATH
 sudo ln -sf "$PWD/filebot.sh" /usr/local/bin/filebot
+sudo ln -sf "$PWD/filebot.sh" /usr/bin/filebot
 
 # Check if the filebot command works
 filebot -version
