@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-
 # Run Program: 
 # "C:\path\to\utorrent-postprocess.pyw" "%L" "%S" "%N" "%K" "%F" "%D"
 #
