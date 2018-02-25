@@ -35,3 +35,9 @@ sudo ln -sf "$PWD/filebot.sh" /usr/local/bin/filebot
 
 # Check if the filebot command works
 filebot -version
+
+echo "Checking for updates"
+
+./update-filebot.sh
+
+filebot -version
