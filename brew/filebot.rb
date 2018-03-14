@@ -1,6 +1,6 @@
 cask 'filebot' do
-  version '4.7.15.9'
-  sha256 '13dc465bf4ad6930af8d6656741e69a52f6aee266fe56b03ea1af72163ce006c'
+  version '4.7.21'
+  sha256 '8b1d2b715e50133e0d6faab6674fca7f8f403c81ed9f4d2cd8449935f9287442'
 
   url "https://get.filebot.net/filebot/latest/FileBot_#{version}-darwin.tar.xz.gpg"
   gpg :embedded, key_url: 'https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub'
