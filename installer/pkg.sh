@@ -1,9 +1,9 @@
 #!/bin/sh -xu
 
-
-URL="https://get.filebot.net/filebot/latest/FileBot_Subtitles.pkg"
-PKG="${TMPDIR}FileBot_Subtitles.pkg"
-APP="/Applications/FileBot Subtitles.app"
+VERSION=4.8.2
+URL="https://get.filebot.net/filebot/FileBot_$VERSION/FileBot_$VERSION.pkg"
+PKG="${TMPDIR}FileBot.pkg"
+APP="/Applications/FileBot.app"
 
 
 function fetch {
