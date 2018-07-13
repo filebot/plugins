@@ -4,7 +4,7 @@
 sudo apt-key add <<< "$(curl -fsSL https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub)"
 
 # 2. Add deb repository to sources.list
-sudo echo "deb [arch=amd64] https://get.filebot.net/deb/ stable main" > /etc/apt/sources.list.d/filebot.list
+echo "deb [arch=amd64] https://get.filebot.net/deb/ stable main" | sudo tee /etc/apt/sources.list.d/filebot.list
 
 # 3. Update package index
 sudo apt-get update
