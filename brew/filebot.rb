@@ -1,6 +1,6 @@
 cask 'filebot' do
   version '4.8.2'
-  sha256 'ee5c9e1439de6c2f090f03dcb6ce206e9cf162658389142b31d424b336bfbbf9'
+  sha256 '20cd5761bc51a213d31ab035f28831fb0e4d9097727a80e32f2d477fcccb0525'
 
   url "https://get.filebot.net/filebot/FileBot_#{version}/FileBot_#{version}.app.tar.xz"
   gpg "#{url}.asc", key_url: 'https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub'
