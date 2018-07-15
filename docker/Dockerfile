@@ -20,7 +20,7 @@ ENV DOCKER_VOLUME /volume1
 
 
 ENV HOME $DOCKER_DATA
-ENV FILEBOT_OPTS "-Duser.home=$DOCKER_DATA -Dapplication.deployment=docker -DuseGVFS=false -Djava.net.useSystemProxies=false"
+ENV FILEBOT_OPTS "-Duser.home=$HOME -Dapplication.deployment=docker -DuseGVFS=false -Djava.net.useSystemProxies=false"
 
 
 WORKDIR $DOCKER_DATA
