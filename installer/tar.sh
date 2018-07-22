@@ -17,9 +17,9 @@ echo "$PACKAGE_SHA256 *$PACKAGE_FILE" | sha256sum --check || exit 1
 tar xvf "$PACKAGE_FILE"
 
 # Fix library path for non-standard Linux architecture values
-ln -sf lib/x86_64 lib/amd64
-ln -sf lib/i686 lib/i386
-ln -sf lib/armv7l lib/armhf
+ln -sf lib/x86_64 amd64
+ln -sf lib/i686   i386
+ln -sf lib/armv7l armhf
 
 # Check if filebot.sh works
 "$PWD/filebot.sh" -script fn:sysinfo
