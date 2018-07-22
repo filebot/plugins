@@ -8,13 +8,18 @@ PACKAGE_URL=https://get.filebot.net/filebot/FileBot_$PACKAGE_VERSION/$PACKAGE_FI
 
 
 # Download latest portable package
-curl -o "$PACKAGE_FILE" -z "$PACKAGE_FILE" --location "$PACKAGE_URL"
+curl -o "$PACKAGE_FILE" -z "$PACKAGE_FILE" "$PACKAGE_URL"
 
 # Check SHA-256 checksum
 echo "$PACKAGE_SHA256 *$PACKAGE_FILE" | sha256sum --check || exit 1
 
 # Extract *.tar.xz archive
 tar xvf "$PACKAGE_FILE"
+
+# Fix library path for non-standard Linux architecture values
+ln -sf lib/x86_64 lib/amd64
+ln -sf lib/i686 lib/i386
+ln -sf lib/armv7l lib/armhf
 
 # Check if filebot.sh works
 "$PWD/filebot.sh" -script fn:sysinfo
