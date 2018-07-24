@@ -8,7 +8,7 @@ ENV FILEBOT_NODE_VERSION 0.2.8
 WORKDIR /usr/local/filebot-node
 
 
-RUN FILEBOT_NODE_SHA256=ed6fe0fb63219780cf6cd7fea6895210123e930640dbd0b5d3214169c99c3c46 \
+RUN FILEBOT_NODE_SHA256=9fc31eace20da6fab44218ad0b3c47ca656e7e3487d5c537dd2f1b633fdf241e \
  && FILEBOT_NODE_PACKAGE=filebot-node-${FILEBOT_NODE_VERSION}-generic.tar.xz \
  && curl -L -O https://github.com/filebot/filebot-node/releases/download/$FILEBOT_NODE_VERSION/$FILEBOT_NODE_PACKAGE \
  && echo "$FILEBOT_NODE_SHA256 *$FILEBOT_NODE_PACKAGE" | sha256sum --check --strict \
