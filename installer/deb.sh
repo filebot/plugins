@@ -1,7 +1,7 @@
-#!/bin/bash -xu
+#!/bin/sh -xu
 
 # 1. Import signing keys
-sudo apt-key add <<< "$(curl -fsSL https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub)"
+curl -fsSL "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub" | sudo apt-key add "-"
 
 # 2. Add deb repository to sources.list
 echo "deb [arch=amd64] https://get.filebot.net/deb/ stable main" | sudo tee /etc/apt/sources.list.d/filebot.list
