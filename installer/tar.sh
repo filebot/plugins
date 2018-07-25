@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -xu
 
 PACKAGE_VERSION=4.8.2
 PACKAGE_SHA256=$(curl -fsSL https://raw.githubusercontent.com/filebot/website/master/get.filebot.net/filebot/FileBot_$PACKAGE_VERSION/FileBot_$PACKAGE_VERSION-portable.tar.xz.sha256)
