@@ -10,4 +10,4 @@ echo "deb [arch=amd64] https://get.filebot.net/deb/ stable main" | sudo tee /etc
 sudo apt-get update
 
 # 4. Install FileBot and its dependencies
-sudo apt-get install filebot --install-suggests
+sudo apt-get install filebot
