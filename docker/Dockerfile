@@ -1,17 +1,17 @@
-FROM openjdk:10-jre
+FROM openjdk:11-jre
 
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
-ENV FILEBOT_VERSION 4.8.2
+ENV FILEBOT_VERSION 4.8.5
 
 
 WORKDIR /usr/share/filebot
 
 
 RUN curl -fsSL https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub | apt-key add \
- && echo "deb [arch=amd64] https://get.filebot.net/deb/ stable main" > /etc/apt/sources.list.d/filebot.list \
+ && echo "deb https://get.filebot.net/deb/ stable universal" > /etc/apt/sources.list.d/filebot.list \
  && apt-get update \
- && apt-get install -y filebot mediainfo libchromaprint-tools curl file inotify-tools \
+ && apt-get install -y --no-install-recommends filebot libjna-jni libmediainfo0v5 libchromaprint-tools p7zip-full p7zip-rar curl file inotify-tools \
  && rm -rvf /var/lib/apt/lists/*
 
 
