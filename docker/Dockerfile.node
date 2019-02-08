@@ -16,10 +16,11 @@ RUN FILEBOT_NODE_SHA256=0a37763ab1c0ec732894c4fe8264a96f3aee70100ae00328e50df9ea
  && rm -rvf $FILEBOT_NODE_PACKAGE \
  && find . -executable -type f -delete
 
-RUN curl -fsSL https://deb.nodesource.com/setup_10.x | bash \
- && apt-get update \
- && apt-get install -y nodejs \
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends nodejs \
  && rm -rf /var/lib/apt/lists/*
+
 
 COPY filebot-node /usr/bin/filebot-node
 
