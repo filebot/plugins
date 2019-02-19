@@ -33,8 +33,11 @@ fi
 # generate raw email message
 MAIL_FILE=$(mktemp)
 
-echo "Subject: [$STATUS] $1
-Content-Type: text/html; charset=utf-8
+echo "Content-Type: text/html; charset=utf-8
+Subject: [$STATUS] $1
+From: \"$1\" <$MAIL_FROM>
+To: $MAIL_TO
+Date: $(date -R)
 
 <!DOCTYPE html>
 <html>
