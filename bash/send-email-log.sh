@@ -2,7 +2,7 @@
 
 
 # Usage:
-# ./send-email.log.sh filebot -script fn:sysinfo
+# ./send-email-log.sh filebot -script fn:sysinfo
 
 
 # required user configuration
