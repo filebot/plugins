@@ -18,7 +18,7 @@ MAIL_TO="$SMTP_USER"
 # run command and capture console output
 LOG_FILE=$(mktemp)
 
-"$@" > "$LOG_FILE" 2>&1
+(time "$@") > "$LOG_FILE" 2>&1
 
 if [ $? -eq 0 ]; then
 	STATUS="OK"
@@ -33,10 +33,24 @@ fi
 # generate raw email message
 MAIL_FILE=$(mktemp)
 
-echo "Subject: [$STATUS] $@
-Content-Type: text/plain; charset=utf-8
-" > "$MAIL_FILE"
-cat "$LOG_FILE" >> "$MAIL_FILE"
+echo "Subject: [$STATUS] $1
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			h1{ font-size: medium; color: CornFlowerBlue; border-bottom: 1px dashed LightGray; padding: 0.5em 0em }
+			pre{ color: DarkSlateGray; margin: 1em 0em }
+		</style>
+	</head>
+	<body>
+		<h1>Execute</h1>
+			<pre><code>$@</code></pre>
+		<h1>Output</h1>
+			<pre><code>$(cat "$LOG_FILE")</code></pre>
+	</body>
+</html>" >> "$MAIL_FILE"
 
 # print raw email message
 cat "$MAIL_FILE"
