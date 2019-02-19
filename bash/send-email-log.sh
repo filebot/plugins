@@ -7,7 +7,7 @@
 
 # required user configuration
 SMTP_SERVER="smtps://smtp.gmail.com:465"
-SMTP_USER="<user>@gmail.com"
+SMTP_USER="<username>@gmail.com"
 SMTP_PASS="<password>"
 
 # optional user configuration
