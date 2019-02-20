@@ -14,7 +14,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Import Media Files</string>
+				<string>Import Media Files with FileBot</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
