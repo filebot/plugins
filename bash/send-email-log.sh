@@ -15,23 +15,35 @@ MAIL_FROM="$SMTP_USER"
 MAIL_TO="$SMTP_USER"
 
 
-# run command and capture console output
+# create temporary files
 LOG_FILE=$(mktemp)
+MAIL_FILE=$(mktemp)
 
+# delete temporary files on exit
+function finish {
+	rm "$LOG_FILE" "$MAIL_FILE"
+}
+trap finish EXIT
+
+
+# run command and capture console output
 (time "$@") > "$LOG_FILE" 2>&1
 
 if [ $? -eq 0 ]; then
 	STATUS="OK"
 
 	# send email only if the command failed (disabled by default)
-	# rm -f "$LOG_FILE"
 	# exit 0
 else
 	STATUS="FAILURE"
 fi
 
-# generate raw email message
-MAIL_FILE=$(mktemp)
+
+function escapeHTML {
+	# escape & < > " and ' and replace them with html entities
+	sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&apos;/g'
+}
+
 
 echo "Content-Type: text/html; charset=utf-8
 Subject: [$STATUS] $1
@@ -49,17 +61,14 @@ Date: $(date -R)
 	</head>
 	<body>
 		<h1>Execute</h1>
-			<pre><code>$@</code></pre>
+		<pre><code>$(escapeHTML <<< "$@")</code></pre>
 		<h1>Output</h1>
-			<pre><code>$(cat "$LOG_FILE")</code></pre>
+		<pre><code>$(escapeHTML < "$LOG_FILE")</code></pre>
 	</body>
 </html>" >> "$MAIL_FILE"
 
 # print raw email message
-cat "$MAIL_FILE"
+# cat "$MAIL_FILE"
 
 # send email
 curl --mail-from "$MAIL_FROM" --mail-rcpt "$MAIL_TO" --upload-file "$MAIL_FILE" --url "$SMTP_SERVER" --ssl-reqd --user "$SMTP_USER:$SMTP_PASS"
-
-# delete temporary files
-rm -f "$LOG_FILE" "$MAIL_FILE"
