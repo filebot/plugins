@@ -5,6 +5,12 @@
 	<key>NSServices</key>
 	<array>
 		<dict>
+			<key>NSBackgroundColorName</key>
+			<string>background</string>
+			<key>NSBackgroundSystemColorName</key>
+			<string>blackColor</string>
+			<key>NSIconName</key>
+			<string>workflowCustomImage</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
@@ -12,11 +18,6 @@
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
-			<key>NSRequiredContext</key>
-			<dict>
-				<key>NSApplicationIdentifier</key>
-				<string>com.apple.finder</string>
-			</dict>
 			<key>NSSendFileTypes</key>
 			<array>
 				<string>public.item</string>
