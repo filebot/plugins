@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>419</string>
+	<string>444.39</string>
 	<key>AMApplicationVersion</key>
-	<string>2.6</string>
+	<string>2.9</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>/usr/local/bin/filebot -script fn:amc --output "$HOME/Media" --action duplicate --conflict skip -non-strict --log-file amc.log --def excludeList=".excludes" unsorted=y music=y artwork=y "$@"</string>
+					<string>/usr/local/bin/filebot -script fn:amc --output "$HOME/Media" --action duplicate --conflict index -non-strict --log-file "$HOME/Media/.amc.log" --def excludeList=".amc.excludes" unsorted=y music=y artwork=y "$@" -exec open -R {f} +</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -84,7 +84,7 @@
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>05D7E8FA-31FE-4AD1-AEC1-0A74228AEB07</string>
+				<string>BA09AE04-D309-42EA-9FB1-73C7F188278C</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -94,9 +94,9 @@
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>122C7D27-E55E-48B7-AD06-A298619C1624</string>
+				<string>152C436E-6F10-48FA-B2D6-F76E8B199205</string>
 				<key>UUID</key>
-				<string>AD75F78A-CC04-4F30-9F0B-F31CA72EAB19</string>
+				<string>8541B781-CB9E-4703-B1BD-9E98554A24F3</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -169,12 +169,14 @@
 						<string>4</string>
 					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:185.000000</string>
+				<string>696.000000:304.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -184,8 +186,10 @@
 	<dict/>
 	<key>workflowMetaData</key>
 	<dict>
+		<key>folderActionFolderPath</key>
+		<string>~/Downloads</string>
 		<key>workflowTypeIdentifier</key>
-		<string>com.apple.Automator.workflow</string>
+		<string>com.apple.Automator.folderAction</string>
 	</dict>
 </dict>
 </plist>
