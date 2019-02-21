@@ -61,9 +61,9 @@ Date: $(date -R)
 	</head>
 	<body>
 		<h1>Execute</h1>
-		<pre><code>$(escapeHTML <<< "$@")</code></pre>
+		<pre><code>$(echo "$@" | escapeHTML)</code></pre>
 		<h1>Output</h1>
-		<pre><code>$(escapeHTML < "$LOG_FILE")</code></pre>
+		<pre><code>$(cat "$LOG_FILE" | escapeHTML)</code></pre>
 	</body>
 </html>" >> "$MAIL_FILE"
 
