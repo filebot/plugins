@@ -15,6 +15,7 @@ function verify {
 }
 
 function install {
+	sudo rm -vrf /Applications/FileBot.localized /Applications/FileBot.app ~/Applications/FileBot.app
 	sudo installer -verbose -package "$1" -target LocalSystem
 }
 
