@@ -9,8 +9,5 @@ brew info || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 # update brew package index and update all packages
 brew update && brew upgrade
 
-# install latest JDK
-brew cask install java --force
-
-# install FileBot bundle to ~/Applications
-brew cask install filebot --force --appdir=~/Applications
+# install FileBot bundle
+brew cask install filebot --force
