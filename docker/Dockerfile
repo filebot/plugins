@@ -4,7 +4,7 @@ MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends openjdk-11-jre-headless libjna-jni libmediainfo0v5 libchromaprint-tools p7zip-full p7zip-rar gnupg1 curl file inotify-tools \
+ && apt-get install -y --no-install-recommends openjdk-11-jre-headless libjna-java libmediainfo0v5 libchromaprint-tools p7zip-full p7zip-rar gnupg1 curl file inotify-tools \
  && rm -rvf /var/lib/apt/lists/*
 
 
