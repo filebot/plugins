@@ -9,7 +9,7 @@ RUN apt-get update \
 
 
 RUN apt-key adv --fetch-keys https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub  \
- && echo "deb [arch=amd64] https://get.filebot.net/deb/ stable main" > /etc/apt/sources.list.d/filebot.list \
+ && echo "deb https://get.filebot.net/deb/ stable universal" > /etc/apt/sources.list.d/filebot.list \
  && apt-get update \
  && apt-get install -y --no-install-recommends filebot \
  && rm -rvf /var/lib/apt/lists/*
