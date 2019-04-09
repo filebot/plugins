@@ -7,6 +7,9 @@ else
 	REPO="deb https://get.filebot.net/deb/ universal main"
 fi
 
+# 0. Prerequisites
+sudo apt-get install gnupg-curl
+
 # 1. Import signing keys
 sudo apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
 
