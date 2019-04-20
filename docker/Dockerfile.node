@@ -18,7 +18,7 @@ RUN FILEBOT_NODE_SHA256=24ffff9beb239afd8df9641de2a44fb748d8cdbecd0ea3b2190d986c
 
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends nodejs \
+ && apt-get install -y nodejs \
  && rm -rf /var/lib/apt/lists/*
 
 
