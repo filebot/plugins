@@ -2,9 +2,9 @@
 
 # use JDK 11  build for Debian Buster / Ubuntu 18.10 or higher, and JDK 8 build otherwise
 if apt-cache show openjfx | grep "Version: 8"; then
-	REPO="deb https://get.filebot.net/deb/ universal-jdk8 main"
+	REPO="deb [arch=all] https://get.filebot.net/deb/ universal-jdk8 main"
 else
-	REPO="deb https://get.filebot.net/deb/ universal main"
+	REPO="deb [arch=all] https://get.filebot.net/deb/ universal main"
 fi
 
 # 1. Import signing keys
