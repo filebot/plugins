@@ -7,6 +7,9 @@ else
 	REPO="deb [arch=all] https://get.filebot.net/deb/ universal main"
 fi
 
+# 0. Install pre-requisites
+sudo apt-get install -y dirmngr gnupg-curl
+
 # 1. Import signing keys
 sudo apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
 
@@ -17,4 +20,4 @@ echo "$REPO" | sudo tee /etc/apt/sources.list.d/filebot.list
 sudo apt-get update
 
 # 4. Install FileBot and its dependencies
-sudo apt-get install filebot
+sudo apt-get install -y filebot
