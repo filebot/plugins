@@ -7,6 +7,8 @@ else
 	REPO="deb [arch=all] https://get.filebot.net/deb/ universal main"
 fi
 
+echo "Use Repository: $REPO"
+
 # 0. Install pre-requisites
 sudo apt-get install -y dirmngr gnupg-curl
 
