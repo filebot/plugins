@@ -22,7 +22,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 
-COPY filebot-node /usr/bin/filebot-node
+COPY filebot-node filebot-node-task /usr/bin/
 
 
 ENV FILEBOT_NODE_AUTH NONE

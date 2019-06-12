@@ -23,7 +23,7 @@ FileBot Node allows you to call the [amc script](https://www.filebot.net/forums/
 docker run --rm -it -v $PWD:/volume1 -v data:/data -p 5452:5452 rednoah/filebot:node
 ```
 
-Once the [FileBot Node Service](https://github.com/filebot/filebot-node) is running, you can access the  web interface via [http://localhost:5452/filebot/](http://localhost:5452/filebot/).
+Once the [FileBot Node Service](https://github.com/filebot/filebot-node) is running, you can access the  web interface via [http://localhost:5452/filebot/](http://localhost:5452/filebot/). You can create prepared tasks via `Execute ➔ Schedule` and then execute them remotely via `curl http://localhost:5452/task?id=${TASK_ID}`.
 
 You may secure the [FileBot Node Service](https://github.com/filebot/filebot-node) by using `HTTPS` and `BASIC` authentication:
 ```
