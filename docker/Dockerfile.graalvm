@@ -1,0 +1,42 @@
+FROM oracle/graalvm-ce:latest
+
+MAINTAINER Reinhard Pointner <rednoah@filebot.net>
+
+
+ENV FILEBOT_VERSION 4.8.6
+ENV FILEBOT_URL https://get.filebot.net/filebot/BETA/FileBot_$FILEBOT_VERSION-portable-jdk8.tar.xz
+ENV FILEBOT_SHA256 4a7d9ae5a42b3417726223fc36c495245f4eeabb2860972dc78dd2e47f841b7b
+
+
+ENV FILEBOT_HOME /opt/filebot
+
+
+RUN set -eux \
+ && curl "$FILEBOT_URL" > /filebot.tar.xz \
+ && echo "$FILEBOT_SHA256 */filebot.tar.xz" | sha256sum -c - \
+ && mkdir -p "$FILEBOT_HOME" \
+ && tar --extract --file /filebot.tar.xz --directory "$FILEBOT_HOME" --verbose \
+ && rm /filebot.tar.xz
+
+
+RUN set -eux \
+ && gu install native-image
+
+
+RUN set -eux \
+ && native-image --verbose --no-server \
+                 --force-fallback \
+                 -Djava.awt.headless=true \
+                 -jar /opt/filebot/jar/filebot.jar
+
+
+VOLUME /data
+VOLUME /volume1
+
+ENV HOME /data
+ENV LANG C.UTF-8
+ENV FILEBOT_OPTS "-Dapplication.deployment=docker -Duser.home=$HOME"
+
+WORKDIR /volume1
+
+ENTRYPOINT ["/filebot"]
