@@ -5,7 +5,7 @@ MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
 ENV FILEBOT_VERSION 4.8.6
 ENV FILEBOT_URL https://get.filebot.net/filebot/BETA/FileBot_$FILEBOT_VERSION-portable-jdk8.tar.xz
-ENV FILEBOT_SHA256 4a7d9ae5a42b3417726223fc36c495245f4eeabb2860972dc78dd2e47f841b7b
+ENV FILEBOT_SHA256 8c63e5abb78f236cb31bb08795984e03bcc09823d5f3026b16b4d8cf741b7530
 
 
 ENV FILEBOT_HOME /opt/filebot
