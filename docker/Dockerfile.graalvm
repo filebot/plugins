@@ -7,8 +7,14 @@ ENV FILEBOT_VERSION 4.8.6
 ENV FILEBOT_URL https://get.filebot.net/filebot/BETA/FileBot_$FILEBOT_VERSION-portable-jdk8.tar.xz
 ENV FILEBOT_SHA256 8c63e5abb78f236cb31bb08795984e03bcc09823d5f3026b16b4d8cf741b7530
 
-
 ENV FILEBOT_HOME /opt/filebot
+
+VOLUME /data
+VOLUME /volume1
+
+ENV HOME /data
+ENV LANG C.UTF-8
+ENV FILEBOT_OPTS "-Dapplication.deployment=docker -Duser.home=$HOME"
 
 
 RUN set -eux \
@@ -24,18 +30,12 @@ RUN set -eux \
 
 
 RUN set -eux \
- && native-image --verbose --no-server \
-                 --force-fallback \
-                 -Djava.awt.headless=true \
-                 -jar /opt/filebot/jar/filebot.jar
+ && sed -i 's/java/native-image/g;s/ -client//g' $FILEBOT_HOME/filebot.sh \
+ && $FILEBOT_HOME/filebot.sh \
+        --verbose \
+        --no-server \
+        --force-fallback
 
-
-VOLUME /data
-VOLUME /volume1
-
-ENV HOME /data
-ENV LANG C.UTF-8
-ENV FILEBOT_OPTS "-Dapplication.deployment=docker -Duser.home=$HOME"
 
 WORKDIR /volume1
 
