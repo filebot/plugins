@@ -1,15 +1,15 @@
-FROM ubuntu:rolling
+FROM ubuntu:18.04
 
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
 RUN apt-get update \
- && apt-get install -y openjdk-11-jre-headless libjna-java libmediainfo0v5 libchromaprint-tools p7zip-full p7zip-rar gnupg curl file inotify-tools \
+ && apt-get install -y default-jre-headless libjna-java libmediainfo0v5 libchromaprint-tools p7zip-full p7zip-rar unrar mkvtoolnix mp4v2-utils gnupg curl file inotify-tools \
  && rm -rvf /var/lib/apt/lists/*
 
 RUN apt-key adv --fetch-keys https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub  \
- && echo "deb https://get.filebot.net/deb/ universal main" > /etc/apt/sources.list.d/filebot.list \
+ && echo "deb [arch=all] https://get.filebot.net/deb/ universal main" > /etc/apt/sources.list.d/filebot.list \
  && apt-get update \
- && apt-get install -y filebot \
+ && apt-get install -y --no-install-recommends filebot \
  && rm -rvf /var/lib/apt/lists/*
 
 VOLUME /data
