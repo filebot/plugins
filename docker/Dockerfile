@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 MAINTAINER Reinhard Pointner <rednoah@filebot.net>
 
 RUN apt-get update \
- && apt-get install -y default-jre-headless libjna-java libmediainfo0v5 libchromaprint-tools p7zip-full p7zip-rar unrar mkvtoolnix mp4v2-utils gnupg curl file inotify-tools \
+ && apt-get install -y default-jre-headless libjna-java mediainfo libchromaprint-tools unrar p7zip-full p7zip-rar mkvtoolnix mp4v2-utils gnupg curl file inotify-tools \
  && rm -rvf /var/lib/apt/lists/*
 
 RUN apt-key adv --fetch-keys https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub  \
