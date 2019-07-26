@@ -10,7 +10,7 @@ class FileBotCommand:
 
   def version(self):
     args = ['-version']
-    return self.execute(args).strip()
+    return self.execute(args)
 
   def execute(self, args):
     command = [self.executable]
