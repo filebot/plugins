@@ -2,14 +2,18 @@ import subprocess
 
 
 class FileBotCommand:
-  executabe = '/usr/local/bin/filebot'
+  executable = '/usr/local/bin/filebot'
+
+  def metadata(self, file):
+    args = ['-mediainfo', file, '--format', '{json}', '--log', 'OFF']
+    return self.execute(args)
 
   def version(self):
     args = ['-version']
     return self.execute(args).strip()
 
   def execute(self, args):
-    command = [self.executabe]
+    command = [self.executable]
     command.extend(args)
     return subprocess.check_output(command)
 
