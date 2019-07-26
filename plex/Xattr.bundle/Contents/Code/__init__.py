@@ -5,7 +5,7 @@ from filebot import *
 
 def Start():
   Log("[START]")
-  Log(FileBotCommand().version().strip())
+  Log(FileBotCommand().version())
 
 
 #####################################################################################################################
@@ -26,13 +26,13 @@ def GetMovieID(xattr):
   tmdbId = xattr['tmdbId']
   if tmdbId > 0:
     id = str(tmdbId)
-    Log("[ID] %s" % id)
+    Log("[TMDB] %s" % id)
     return id
 
   imdbId = xattr['imdbId']
   if imdbId > 0:
     id = 'tt%07d' % imdbId
-    Log("[ID] %s" % id)
+    Log("[IMDB] %s" % id)
     return id
 
   return None
