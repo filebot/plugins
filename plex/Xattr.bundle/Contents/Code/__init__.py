@@ -1,10 +1,10 @@
 import json
-import filebot
+
+from filebot import *
 
 
 def Start():
-  Log("START".ljust(157, '-'))
-  Log(FileBotCommand().version())
+  Log(FileBotCommand().version().strip())
 
 
 #####################################################################################################################
@@ -27,38 +27,26 @@ class XattrMovieAgent(Agent.Movies):
 
 
   def search(self, results, media, lang):
-    Log("search()".ljust(157, '-'))
-    Log("self: %s" % self)
-    Log("results: %s" % results)
-    Log("media: %s" % media)
-    Log("lang: %s" % lang)
     results.Append(MetadataSearchResult(id = 'null', score = 100))
 
 
   def update(self, metadata, media, lang):
-    Log("update()".ljust(157, '-'))
-    Log("self: %s" % self)
-    Log("metadata: %s" % metadata)
-    Log("media: %s" % media)
-    Log("lang: %s" % lang)
+    if media.items is None:
+      return
 
-    for attr_name, attr_obj in metadata.attrs.iteritems():
-      Log("attr_name: %s" % attr_name)
-      Log("attr_obj: %s" % attr_obj)
-
-    file = movie.parts[0]
-    Log("file: %s" % file)
+    file = media.items[0].parts[0].file
+    Log("[FILE] %s" % file)
 
     xattr = ReadXattrObject(file)
-    Log("xattr: %s" % xattr)
+    Log("[XATTR] %s" % xattr)
 
     metadata.title = xattr['name']
     metadata.year = xattr['year']
 
     tmdbId = xattr['tmdbId']
     imdbId = xattr['imdbId']
+
     if tmdbId > 0:
-      metadata.id = tmdbId
+      metadata.id = str(tmdbId)
     elif imdbId > 0:
       metadata.id = 'tt%0*d' % (7, imdbId)
-
