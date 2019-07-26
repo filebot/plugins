@@ -49,4 +49,4 @@ class XattrMovieAgent(Agent.Movies):
     if tmdbId > 0:
       metadata.id = str(tmdbId)
     elif imdbId > 0:
-      metadata.id = 'tt%0*d' % (7, imdbId)
+      metadata.id = 'tt%07d' % imdbId
