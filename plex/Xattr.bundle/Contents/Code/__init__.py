@@ -1,11 +1,10 @@
 import json
 
-from filebot import *
+import xattr
 
 
 def Start():
   Log("[START]")
-  Log(FileBotCommand().version())
 
 
 #####################################################################################################################
@@ -13,23 +12,23 @@ def Start():
 
 def ReadXattrObject(file):
   Log("[FILE] %s" % file)
-  xattrValue = FileBotCommand().metadata(file)
-  if len(xattrValue) > 0:
-    Log("[XATTR] %s" % xattrValue)
-    return json.loads(xattrValue)
+  metadata = xattr.getxattr(file, 'net.filebot.metadata')
+
+  Log("[XATTR] %s" % metadata)
+  if metadata is not None:
+    return json.loads(metadata)
   else:
-    Log("[XATTR] undefined")
     return None
 
 
-def GetMovieID(xattr):
-  tmdbId = xattr['tmdbId']
+def GetMovieID(attr):
+  tmdbId = attr['tmdbId']
   if tmdbId > 0:
     id = str(tmdbId)
     Log("[TMDB] %s" % id)
     return id
 
-  imdbId = xattr['imdbId']
+  imdbId = attr['imdbId']
   if imdbId > 0:
     id = 'tt%07d' % imdbId
     Log("[IMDB] %s" % id)
@@ -56,20 +55,20 @@ class XattrMovieAgent(Agent.Movies):
       return
 
     file = media.items[0].parts[0].file
-    xattr = ReadXattrObject(file)
-    if xattr is None:
+    attr = ReadXattrObject(file)
+    if attr is None:
       return
 
-    id = GetMovieID(xattr)
+    id = GetMovieID(attr)
     if id is None:
       return
 
     results.Append(
       MetadataSearchResult(
         id = id, 
-        name = xattr['name'], 
-        year = xattr['year'],
-        lang = xattr['language'],
+        name = attr['name'], 
+        year = attr['year'],
+        lang = attr['language'],
         score = 100
       )
     )
@@ -82,14 +81,14 @@ class XattrMovieAgent(Agent.Movies):
       return
 
     file = media.items[0].parts[0].file
-    xattr = ReadXattrObject(file)
-    if xattr is None:
+    attr = ReadXattrObject(file)
+    if attr is None:
       return
 
-    id = GetMovieID(xattr)
+    id = GetMovieID(attr)
     if id is None:
       return
 
     metadata.id = id
-    metadata.title = xattr['name']
-    metadata.year = xattr['year']
+    metadata.title = attr['name']
+    metadata.year = attr['year']
