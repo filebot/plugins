@@ -4,6 +4,7 @@ from filebot import *
 
 
 def Start():
+  Log("[START]")
   Log(FileBotCommand().version().strip())
 
 
@@ -11,8 +12,30 @@ def Start():
 
 
 def ReadXattrObject(file):
+  Log("[FILE] %s" % file)
   xattrValue = FileBotCommand().metadata(file)
-  return json.loads(xattrValue)
+  if len(xattrValue) > 0:
+    Log("[XATTR] %s" % xattrValue)
+    return json.loads(xattrValue)
+  else:
+    Log("[XATTR] undefined")
+    return None
+
+
+def GetMovieID(xattr):
+  tmdbId = xattr['tmdbId']
+  if tmdbId > 0:
+    id = str(tmdbId)
+    Log("[ID] %s" % id)
+    return id
+
+  imdbId = xattr['imdbId']
+  if imdbId > 0:
+    id = 'tt%07d' % imdbId
+    Log("[ID] %s" % id)
+    return id
+
+  return None
 
 
 #####################################################################################################################
@@ -27,26 +50,46 @@ class XattrMovieAgent(Agent.Movies):
 
 
   def search(self, results, media, lang):
-    results.Append(MetadataSearchResult(id = 'null', score = 100))
+    Log("[SEARCH]")
 
-
-  def update(self, metadata, media, lang):
     if media.items is None:
       return
 
     file = media.items[0].parts[0].file
-    Log("[FILE] %s" % file)
-
     xattr = ReadXattrObject(file)
-    Log("[XATTR] %s" % xattr)
+    if xattr is None:
+      return
 
+    id = GetMovieID(xattr)
+    if id is None:
+      return
+
+    results.Append(
+      MetadataSearchResult(
+        id = id, 
+        name = xattr['name'], 
+        year = xattr['year'],
+        lang = xattr['language'],
+        score = 100
+      )
+    )
+
+
+  def update(self, metadata, media, lang):
+    Log("[UPDATE]")
+
+    if media.items is None:
+      return
+
+    file = media.items[0].parts[0].file
+    xattr = ReadXattrObject(file)
+    if xattr is None:
+      return
+
+    id = GetMovieID(xattr)
+    if id is None:
+      return
+
+    metadata.id = id
     metadata.title = xattr['name']
     metadata.year = xattr['year']
-
-    tmdbId = xattr['tmdbId']
-    imdbId = xattr['imdbId']
-
-    if tmdbId > 0:
-      metadata.id = str(tmdbId)
-    elif imdbId > 0:
-      metadata.id = 'tt%07d' % imdbId
