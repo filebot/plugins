@@ -26,7 +26,7 @@ else:
     libc.getxattr.restype = c_ssize_t
     def getxattr_impl(file, name, buffer): return libc.getxattr(file, name, buffer, sizeof(buffer))
 
-  elif sys.platform == 'darwin':
+  elif sys.platform.startswith('darwin'):
     libc.getxattr.argtypes = (c_char_p, c_char_p, c_char_p, c_size_t, c_uint32, c_int)
     libc.getxattr.restype = c_ssize_t
     def getxattr_impl(file, name, buffer): return libc.getxattr(file, name, buffer, sizeof(buffer), 0, 0)
