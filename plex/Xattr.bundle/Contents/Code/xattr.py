@@ -9,7 +9,7 @@ if os.name == 'nt':
         buffer = fd.read()
         fd.close()
         return buffer.decode('UTF-8')
-      except: 
+      except:
         return None
 
 
@@ -18,22 +18,22 @@ elif os.name == 'posix':
   from ctypes import *
   from ctypes.util import *
 
-  libc_name = find_library('c')
-  libc = CDLL(libc_name)
+  # use current process to load library
+  libc = CDLL(None)
 
-  if sys.platform.startswith('linux'):
+  if sys.platform.find('linux') >= 0:
     libc.getxattr.argtypes = (c_char_p, c_char_p, c_char_p, c_size_t)
     libc.getxattr.restype = c_ssize_t
     def getxattr_impl(file, name, buffer):
       return libc.getxattr(file, name, buffer, sizeof(buffer))
 
-  elif sys.platform.startswith('darwin'):
+  elif sys.platform.find('darwin') >= 0:
     libc.getxattr.argtypes = (c_char_p, c_char_p, c_char_p, c_size_t, c_uint32, c_int)
     libc.getxattr.restype = c_ssize_t
     def getxattr_impl(file, name, buffer):
       return libc.getxattr(file, name, buffer, sizeof(buffer), 0, 0)
 
-  elif sys.platform.startswith('freebsd'):
+  elif sys.platform.find('bsd') >= 0:
     libc.extattr_get_file.argtypes = (c_char_p, c_int, c_char_p, c_char_p, c_size_t)
     libc.extattr_get_file.restype = c_ssize_t
     def getxattr_impl(file, name, buffer):
