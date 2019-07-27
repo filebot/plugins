@@ -65,6 +65,12 @@ else:
 
 
 if __name__ == "__main__":
-  for f in sys.argv:
-    print(f)
-    print(getxattr(f, 'net.filebot.metadata'))
+  path = sys.argv[1]
+  name = sys.argv[2:]
+
+  for root, directories, files in os.walk(path):
+    for f in files:
+      f = os.path.join(root, f)
+      print(f)
+      for n in name:
+        print("\t%s: %s" % (n, getxattr(f, n)))
