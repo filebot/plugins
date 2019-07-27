@@ -50,7 +50,7 @@ elif os.name == 'posix':
     file = fsencode(file)
     name = fsencode(name)
 
-    buffer = create_string_buffer(64 * 1024)
+    buffer = create_string_buffer(8 * 1024)
     n = getxattr_impl(file, name, buffer)
     if n > 0:
       return buffer.raw[0:n].decode('UTF-8')
