@@ -64,6 +64,7 @@ else:
     return None
 
 
+# python xattr.py /path/to/file net.filebot.metadata
 if __name__ == "__main__":
   file = sys.argv[1]
   name = sys.argv[2]
