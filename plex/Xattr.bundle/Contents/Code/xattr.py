@@ -39,9 +39,6 @@ elif os.name == 'posix':
     def getxattr_impl(file, name, buffer):
       return libc.extattr_get_file(file, 0x0001, name, buffer, sizeof(buffer))  #define EXTATTR_NAMESPACE_USER    0x00000001
 
-  else:
-    def getxattr_impl(file, name, buffer):
-      return 0
 
   def fsencode(file):
     return file.encode(sys.getfilesystemencoding())
@@ -50,18 +47,12 @@ elif os.name == 'posix':
     file = fsencode(file)
     name = fsencode(name)
 
-    buffer = create_string_buffer(8 * 1024)
+    buffer = create_string_buffer(8 * 1024)  # xattr size may be limited to 4 KB or less (e.g. ext4)
     n = getxattr_impl(file, name, buffer)
     if n > 0:
       return buffer.raw[0:n].decode('UTF-8')
     else:
       return None
-
-
-# other platforms / not supported
-else:
-  def getxattr(file, name):
-    return None
 
 
 # python xattr.py /path/to/file net.filebot.metadata
