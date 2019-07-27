@@ -1,43 +1,8 @@
-import os, json
-import filebot, xattr
+import filebot
 
 
 def Start():
   Log("[START]")
-
-
-#####################################################################################################################
-
-
-def ReadXattrObject(file):
-  Log("[FILE] %s" % file)
-
-  if Prefs['net.filebot.xattr.store']:
-    metadata = filebot.getxattr_plain_file(Prefs['net.filebot.xattr.store'], file, 'net.filebot.metadata')
-  else:
-    metadata = xattr.getxattr(file, 'net.filebot.metadata')
-
-  Log("[XATTR] %s" % metadata)
-  if metadata is not None:
-    return json.loads(metadata)
-  else:
-    return None
-
-
-def GetMovieID(attr):
-  tmdbId = attr['tmdbId']
-  if tmdbId > 0:
-    id = str(tmdbId)
-    Log("[TMDB] %s" % id)
-    return id
-
-  imdbId = attr['imdbId']
-  if imdbId > 0:
-    id = 'tt%07d' % imdbId
-    Log("[IMDB] %s" % id)
-    return id
-
-  return None
 
 
 #####################################################################################################################
@@ -58,11 +23,11 @@ class XattrMovieAgent(Agent.Movies):
       return
 
     file = media.items[0].parts[0].file
-    attr = ReadXattrObject(file)
+    attr = filebot.metadata(file)
     if attr is None:
       return
 
-    id = GetMovieID(attr)
+    id = filebot.movie_id(attr)
     if id is None:
       return
 
@@ -84,11 +49,11 @@ class XattrMovieAgent(Agent.Movies):
       return
 
     file = media.items[0].parts[0].file
-    attr = ReadXattrObject(file)
+    attr = filebot.metadata(file)
     if attr is None:
       return
 
-    id = GetMovieID(attr)
+    id = filebot.movie_id(attr)
     if id is None:
       return
 
