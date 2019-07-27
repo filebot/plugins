@@ -14,7 +14,7 @@ if os.name == 'nt':
 
 
 # Unix / xattr
-else:
+elif os.name == 'posix':
   from ctypes import *
   from ctypes.util import *
 
@@ -24,17 +24,24 @@ else:
   if sys.platform.startswith('linux'):
     libc.getxattr.argtypes = (c_char_p, c_char_p, c_char_p, c_size_t)
     libc.getxattr.restype = c_ssize_t
-    def getxattr_impl(file, name, buffer): return libc.getxattr(file, name, buffer, sizeof(buffer))
+    def getxattr_impl(file, name, buffer):
+      return libc.getxattr(file, name, buffer, sizeof(buffer))
 
   elif sys.platform.startswith('darwin'):
     libc.getxattr.argtypes = (c_char_p, c_char_p, c_char_p, c_size_t, c_uint32, c_int)
     libc.getxattr.restype = c_ssize_t
-    def getxattr_impl(file, name, buffer): return libc.getxattr(file, name, buffer, sizeof(buffer), 0, 0)
+    def getxattr_impl(file, name, buffer):
+      return libc.getxattr(file, name, buffer, sizeof(buffer), 0, 0)
 
   elif sys.platform.startswith('freebsd'):
     libc.extattr_get_file.argtypes = (c_char_p, c_int, c_char_p, c_char_p, c_size_t)
     libc.extattr_get_file.restype = c_ssize_t
-    def getxattr_impl(file, name, buffer): return libc.extattr_get_file(file, 0x0001, name, buffer, sizeof(buffer))
+    def getxattr_impl(file, name, buffer):
+      return libc.extattr_get_file(file, 0x0001, name, buffer, sizeof(buffer))
+
+  else:
+    def getxattr_impl(file, name, buffer):
+      return 0
 
   def fsencode(file):
     return file.encode(sys.getfilesystemencoding())
@@ -49,6 +56,12 @@ else:
       return buffer.raw[0:n].decode('UTF-8')
     else:
       return None
+
+
+# other platforms / not supported
+else:
+  def getxattr(file, name):
+    return None
 
 
 if __name__ == "__main__":
