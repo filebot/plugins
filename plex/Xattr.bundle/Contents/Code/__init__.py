@@ -1,6 +1,5 @@
-import json
-
-import xattr
+import os, json
+import filebot, xattr
 
 
 def Start():
@@ -12,7 +11,11 @@ def Start():
 
 def ReadXattrObject(file):
   Log("[FILE] %s" % file)
-  metadata = xattr.getxattr(file, 'net.filebot.metadata')
+
+  if Prefs['net.filebot.xattr.store']:
+    metadata = filebot.getxattr_plain_file(Prefs['net.filebot.xattr.store'], file, 'net.filebot.metadata')
+  else:
+    metadata = xattr.getxattr(file, 'net.filebot.metadata')
 
   Log("[XATTR] %s" % metadata)
   if metadata is not None:
