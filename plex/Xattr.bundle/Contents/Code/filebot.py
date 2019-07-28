@@ -46,18 +46,33 @@ def getxattr_plain_file(store, file, name):
 
 
 def movie_id(attr):
-  id = attr['tmdbId']
-  if id > 0:
-    Log("[TMDB] %s" % id)
-    return str(id)
+  imdb_id = attr['imdbId']
+  if imdb_id > 0:
+    imdb_id = "tt%07d" % imdb_id
+    Log("[IMDB] %s" % imdb_id)
+    return imdb_id
 
-  id = attr['imdbId']
-  if id > 0:
-    id = 'tt%07d' % id
-    Log("[IMDB] %s" % id)
-    return id
+  tmdb_id = attr['tmdbId']
+  if tmdb_id > 0:
+    tmdb_id = str(tmdb_id)
+    Log("[TMDB] %s" % tmdb_id)
+    return tmdb_id
 
   return None
+
+
+def movie_guid(attr):
+  imdb_id = attr['imdbId']
+  if imdb_id > 0:
+    guid = "tt%07d" % imdb_id
+    Log("[GUID] %s" % guid)
+    return guid
+
+  tmdb_id = attr['tmdbId']
+  if tmdb_id > 0:
+    guid = "com.plexapp.agents.themoviedb://%s?lang=%s" % (tmdb_id, movie_language(attr))
+    Log("[GUID] %s" % guid)
+    return guid
 
 
 def movie_name(attr):     return attr.get('name')
@@ -73,6 +88,22 @@ def tvdb_series_id(attr):
     id = attr_get(attr, 'seriesInfo', 'id')
     Log("[TheTVDB] %s" % id)
     return str(id)
+
+  return None
+
+
+def series_guid(attr):
+  series_id = attr_get(attr, 'seriesInfo', 'id')
+  if series_id > 0:
+    db = attr_get(attr, 'seriesInfo', 'database')
+    if db == 'TheTVDB':
+      guid = "com.plexapp.agents.thetvdb://%s?lang=%s" % (series_id, series_language(attr))
+    else:
+      guid = "%s::%s" % (db, series_id)
+
+    Log("[GUID] %s" % guid)
+    return guid
+
   return None
 
 

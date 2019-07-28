@@ -11,10 +11,10 @@ def Start():
 class XattrMovieAgent(Agent.Movies):
   name = 'FileBot Xattr Metadata (Movies)'
   languages = [Locale.Language.NoLanguage]
-  primary_provider = False
+  primary_provider = True
   persist_stored_files = False
-  accepts_from = None
-  contributes_to = None
+  accepts_from = ['com.plexapp.agents.imdb', 'com.plexapp.agents.themoviedb']
+  contributes_to = ['com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
 
 
   def search(self, results, media, lang):
@@ -28,16 +28,16 @@ class XattrMovieAgent(Agent.Movies):
     if attr is None:
       return
 
-    id = movie_id(attr)
-    if id is None:
+    guid = movie_guid(attr)
+    if guid is None:
       return
 
     results.Append(
       MetadataSearchResult(
-        id = id, 
-        name = attr.get('name'),
-        year = attr.get('year'),
-        lang = attr.get('language'),
+        id = guid, 
+        name = movie_name(attr),
+        year = movie_year(attr),
+        lang = movie_language(attr),
         score = 100
       )
     )
@@ -54,13 +54,13 @@ class XattrMovieAgent(Agent.Movies):
     if attr is None:
       return
 
-    id = movie_id(attr)
-    if id is None:
+    guid = movie_guid(attr)
+    if guid is None:
       return
 
-    metadata.id = id
-    metadata.title = attr.get('name')
-    metadata.year = attr.get('year')
+    metadata.id = guid
+    metadata.title = movie_name(attr)
+    metadata.year = movie_year(attr)
 
 
 #####################################################################################################################
@@ -70,9 +70,10 @@ class XattrSeriesAgent(Agent.TV_Shows):
   name = 'FileBot Xattr Metadata (TV)'
   languages = [Locale.Language.NoLanguage]
   primary_provider = True
-  fallback_agent = None
   persist_stored_files = False
-  contributes_to = ['com.plexapp.agents.thetvdb', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.none']
+  accepts_from = ['com.plexapp.agents.thetvdb']
+  contributes_to = ['com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
+
 
   def search(self, results, media, lang, manual=False):
     for s in media.seasons:
@@ -85,13 +86,13 @@ class XattrSeriesAgent(Agent.TV_Shows):
             if attr is None:
               continue
 
-            id = thetvdb_id(attr)
-            if id is None:
+            guid = series_guid(attr)
+            if guid is None:
               continue
 
             results.Append(
               MetadataSearchResult(
-                id = id,
+                id = guid,
                 name = series_name(attr),
                 year = series_year(attr),
                 lang = series_language(attr),
@@ -111,24 +112,21 @@ class XattrSeriesAgent(Agent.TV_Shows):
             if attr is None:
               return
 
-            id = thetvdb_id(attr)
-            if id is None:
+            guid = series_guid(attr)
+            if guid is None:
               continue
 
-            metadata.id = id
+            metadata.id = guid
             metadata.title = series_name(attr)
             metadata.originally_available_at = series_date(attr)
-
-            metadata.content_rating = attr_get(attr, 'seriesInfo', 'certification')
-            metadata.studio = attr_get(attr, 'seriesInfo', 'network')
-            metadata.duration = attr_get(attr, 'seriesInfo', 'runtime')
-            metadata.rating = attr_get(attr, 'seriesInfo', 'rating')
-            metadata.genres = attr_get(attr, 'seriesInfo', 'genres')
+            metadata.content_rating = series_certification(attr)
+            metadata.studio = series_network(attr)
+            metadata.duration = series_runtime(attr)
+            metadata.rating = series_rating(attr)
+            metadata.genres = series_genres(attr)
 
             episode = metadata.seasons[s].episodes[e]
-            Log("[EPISODE] %s" % episode)
 
-            episode.title = attr.get('title')
-            episode.absolute_index = attr.get('absolute')
+            episode.title = episode_title(attr)
+            episode.absolute_index = episode_absolute_number(attr)
             episode.originally_available_at = episode_date(attr)
-            Log("[EPISODE] %s" % episode)
