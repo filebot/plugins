@@ -13,7 +13,8 @@ class XattrMovieAgent(Agent.Movies):
   languages = [Locale.Language.NoLanguage]
   primary_provider = False
   persist_stored_files = False
-  contributes_to = ['com.plexapp.agents.themoviedb', 'com.plexapp.agents.imdb', 'com.plexapp.agents.none']
+  accepts_from = None
+  contributes_to = None
 
 
   def search(self, results, media, lang):
