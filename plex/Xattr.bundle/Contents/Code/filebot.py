@@ -1,10 +1,11 @@
 import json
 
 from os.path import *
+from datetime import *
 from xattr import *
 
 
-def metadata(file):
+def xattr_metadata(file):
   Log("[FILE] %s" % file)
 
   # try xattr
@@ -22,18 +23,53 @@ def metadata(file):
 
 
 def movie_id(attr):
-  tmdb_id = attr['tmdbId']
-  if tmdb_id > 0:
-    id = str(tmdb_id)
+  id = attr['tmdbId']
+  if id > 0:
     Log("[TMDB] %s" % id)
-    return id
+    return str(id)
 
-  imdb_id = attr['imdbId']
-  if imdb_id > 0:
-    id = 'tt%07d' % imdb_id
+  id = attr['imdbId']
+  if id > 0:
+    id = 'tt%07d' % id
     Log("[IMDB] %s" % id)
     return id
 
+  return None
+
+
+def thetvdb_id(attr):
+  if attr_get(attr, 'seriesInfo', 'database') == 'TheTVDB':
+    id = attr_get(attr, 'seriesInfo', 'id')
+    Log("[TheTVDB] %s" % id)
+    return str(id)
+  return None
+
+
+def series_name(attr):
+  return attr_get(attr, 'seriesName')
+
+def series_year(attr):
+  return attr_get(attr, 'seriesInfo', 'startDate', 'year')
+
+def series_language(attr):
+  return attr_get(attr, 'seriesInfo', 'language')
+
+def series_date(attr):
+  return attr_date(attr_get(attr, 'seriesInfo', 'startDate'))
+
+def episode_date(attr):
+  return attr_date(attr_get(attr, 'airdate'))
+
+def attr_get(attr, *keys):
+  for k in keys:
+    attr = attr.get(k)
+    if attr is None:
+      return None
+  return attr
+
+def attr_date(attr):
+  if attr is not None:
+    return datetime(year=attr['year'], month=attr['month'], day=attr['day'])
   return None
 
 
