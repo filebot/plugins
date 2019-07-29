@@ -15,7 +15,10 @@ def Scan(path, files, mediaList, subdirs, language=None, root=None):
     if guid is None:
       continue
 
-    movie = Media.Movie(movie_name(attr), movie_year(attr))
+    movie = Media.Movie(
+      str(movie_name(attr)),  # use str() since Plex doesn't like unicode strings
+      movie_year(attr)
+    )
     movie.guid = guid
 
     movie.parts.append(file)

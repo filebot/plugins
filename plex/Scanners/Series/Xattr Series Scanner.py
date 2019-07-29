@@ -15,7 +15,13 @@ def Scan(path, files, mediaList, subdirs, language=None, root=None):
     if guid is None:
       continue
 
-    episode = Media.Episode(series_name(attr), episode_season_number(attr), episode_number(attr), episode_title(attr), series_year(attr))
+    episode = Media.Episode(
+      str(series_name(attr)),
+      episode_season_number(attr),
+      episode_number(attr),
+      str(episode_title(attr)),
+      series_year(attr)
+    )
 
     date = episode_date(attr)
     if date:
