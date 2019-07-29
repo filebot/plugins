@@ -37,7 +37,7 @@ elif os.name == 'posix':
     libc.extattr_get_file.argtypes = (c_char_p, c_int, c_char_p, c_char_p, c_size_t)
     libc.extattr_get_file.restype = c_ssize_t
     def getxattr_impl(file, name, buffer):
-      return libc.extattr_get_file(fsencode(file), 0x01, fsencode(name), buffer, sizeof(buffer))  #define EXTATTR_NAMESPACE_USER    0x00000001
+      return libc.extattr_get_file(fsencode(file), 0x1, fsencode(name), buffer, sizeof(buffer))  #define EXTATTR_NAMESPACE_USER    0x00000001
 
 
   def fsencode(file):
