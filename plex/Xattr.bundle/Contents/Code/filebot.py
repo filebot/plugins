@@ -83,7 +83,7 @@ def movie_language(attr): return attr.get('language')
 #####################################################################################################################
 
 
-def tvdb_series_id(attr):
+def thetvdb_series_id(attr):
   if attr_get(attr, 'seriesInfo', 'database') == 'TheTVDB':
     id = attr_get(attr, 'seriesInfo', 'id')
     Log("[TheTVDB] %s" % id)

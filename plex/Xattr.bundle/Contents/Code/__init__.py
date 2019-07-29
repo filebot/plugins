@@ -2,7 +2,7 @@ from filebot import *
 
 
 def Start():
-  Log("[START]")
+  Log("FileBot Xattr Metadata Agent - CPU: %s, OS: %s" % (Platform.CPU, Platform.OS))
 
 
 #####################################################################################################################
@@ -11,10 +11,9 @@ def Start():
 class XattrMovieAgent(Agent.Movies):
   name = 'FileBot Xattr Metadata (Movies)'
   languages = [Locale.Language.NoLanguage]
-  primary_provider = True
+  primary_provider = False
   persist_stored_files = False
-  accepts_from = ['com.plexapp.agents.imdb', 'com.plexapp.agents.themoviedb']
-  contributes_to = ['com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
+  contributes_to = ['com.plexapp.agents.imdb', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
 
 
   def search(self, results, media, lang):
@@ -28,19 +27,11 @@ class XattrMovieAgent(Agent.Movies):
     if attr is None:
       return
 
-    guid = movie_guid(attr)
-    if guid is None:
+    mid = movie_id(attr)
+    if mid is None:
       return
 
-    results.Append(
-      MetadataSearchResult(
-        id = guid, 
-        name = movie_name(attr),
-        year = movie_year(attr),
-        lang = movie_language(attr),
-        score = 100
-      )
-    )
+    results.Append(MetadataSearchResult(id=mid, name=movie_name(attr), year=movie_year(attr), lang=lang, score=100))
 
 
   def update(self, metadata, media, lang):
@@ -54,11 +45,11 @@ class XattrMovieAgent(Agent.Movies):
     if attr is None:
       return
 
-    guid = movie_guid(attr)
-    if guid is None:
+    mid = movie_id(attr)
+    if mid is None:
       return
 
-    metadata.id = guid
+    metadata.id = mid
     metadata.title = movie_name(attr)
     metadata.year = movie_year(attr)
 
@@ -72,10 +63,10 @@ class XattrSeriesAgent(Agent.TV_Shows):
   primary_provider = True
   persist_stored_files = False
   accepts_from = ['com.plexapp.agents.thetvdb']
-  contributes_to = ['com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
+  contributes_to = ['com.plexapp.agents.thetvdb', 'com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
 
 
-  def search(self, results, media, lang, manual=False):
+  def search(self, results, media, lang):
     for s in media.seasons:
       for e in media.seasons[s].episodes:
         for i in media.seasons[s].episodes[e].items:
@@ -86,22 +77,17 @@ class XattrSeriesAgent(Agent.TV_Shows):
             if attr is None:
               continue
 
-            guid = series_guid(attr)
-            if guid is None:
+            sid = thetvdb_series_id(attr)
+            if sid is None:
               continue
 
-            results.Append(
-              MetadataSearchResult(
-                id = guid,
-                name = series_name(attr),
-                year = series_year(attr),
-                lang = series_language(attr),
-                score = 100
-              )
-            )
+            media.id = sid
+            media.show = series_name(attr)
+            media.year = series_year(attr)
+            results.Append(MetadataSearchResult(id=media.id, name=media.show, year=media.year, lang=lang, score=100))
 
 
-  def update(self, metadata, media, lang, force=False):
+  def update(self, metadata, media, lang):
     for s in media.seasons:
       for e in media.seasons[s].episodes:
         for i in media.seasons[s].episodes[e].items:
@@ -112,11 +98,11 @@ class XattrSeriesAgent(Agent.TV_Shows):
             if attr is None:
               return
 
-            guid = series_guid(attr)
-            if guid is None:
+            sid = thetvdb_series_id(attr)
+            if sid is None:
               continue
 
-            metadata.id = guid
+            metadata.id = sid
             metadata.title = series_name(attr)
             metadata.originally_available_at = series_date(attr)
             metadata.content_rating = series_certification(attr)
