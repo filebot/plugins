@@ -12,7 +12,6 @@ class XattrMovieAgent(Agent.Movies):
   name = 'FileBot Xattr Metadata (Movies)'
   languages = [Locale.Language.NoLanguage]
   primary_provider = False
-  persist_stored_files = False
   contributes_to = ['com.plexapp.agents.imdb', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
 
 
@@ -60,10 +59,8 @@ class XattrMovieAgent(Agent.Movies):
 class XattrSeriesAgent(Agent.TV_Shows):
   name = 'FileBot Xattr Metadata (TV)'
   languages = [Locale.Language.NoLanguage]
-  primary_provider = True
-  persist_stored_files = False
-  accepts_from = ['com.plexapp.agents.thetvdb']
-  contributes_to = ['com.plexapp.agents.thetvdb', 'com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
+  primary_provider = False
+  contributes_to = ['com.plexapp.agents.thetvdb', 'com.plexapp.agents.themoviedb', 'com.plexapp.agents.localmedia', 'com.plexapp.agents.none']
 
 
   def search(self, results, media, lang):
