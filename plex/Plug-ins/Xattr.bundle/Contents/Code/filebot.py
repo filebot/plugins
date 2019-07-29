@@ -73,7 +73,7 @@ def series_id(attr):
   series_id = attr_get(attr, 'seriesInfo', 'id')
   if series_id > 0:
     db = attr_get(attr, 'seriesInfo', 'database')
-    return "%s[%s]" % (db, series_id)
+    return "%s_%s" % (db, series_id)
 
   return None
 
@@ -82,7 +82,15 @@ def series_guid(attr):
   series_id = attr_get(attr, 'seriesInfo', 'id')
   if series_id > 0:
     db = attr_get(attr, 'seriesInfo', 'database')
-    return "com.plexapp.agents.%s://%s?lang=%s" % (db.lower(), series_id, series_language(attr))
+    lang = series_language(attr)
+    if db == 'TheTVDB':
+      return "com.plexapp.agents.thetvdb://%s?lang=%s" % (series_id, lang)
+    elif db == 'TheMovieDB::TV':
+      return "com.plexapp.agents.themoviedb://%s?lang=%s" % (series_id, lang)
+    elif db == 'AniDB':
+      return "com.plexapp.agents.hama://%s?lang=%s" % (series_id, lang)
+    else:
+      return "%s://%s" % (db.lower(), series_id)
 
   return None
 
