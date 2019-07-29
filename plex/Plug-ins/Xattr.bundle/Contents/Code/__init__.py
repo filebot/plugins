@@ -81,10 +81,7 @@ class XattrSeriesAgent(Agent.TV_Shows):
             if sid is None:
               continue
 
-            media.id = sid
-            media.show = series_name(attr)
-            media.year = series_year(attr)
-            results.Append(MetadataSearchResult(id=media.id, name=media.show, year=media.year, lang=lang, score=100))
+            results.Append(MetadataSearchResult(id=sid, name=series_name(attr), year=series_year(attr), lang=lang, score=100))
 
 
   def update(self, metadata, media, lang):
