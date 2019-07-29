@@ -22,11 +22,17 @@ class XattrMovieAgent(Agent.Movies):
       return
 
     file = media.items[0].parts[0].file
+    Log("[FILE] %s" % file)
+
     attr = xattr_metadata(file)
+    Log("[XATTR] %s" % attr)
+
     if attr is None:
       return
 
     mid = movie_id(attr)
+    Log("[ID] %s" % mid)
+
     if mid is None:
       return
 
@@ -40,11 +46,17 @@ class XattrMovieAgent(Agent.Movies):
       return
 
     file = media.items[0].parts[0].file
+    Log("[FILE] %s" % file)
+
     attr = xattr_metadata(file)
+    Log("[XATTR] %s" % attr)
+
     if attr is None:
       return
 
     mid = movie_id(attr)
+    Log("[ID] %s" % mid)
+
     if mid is None:
       return
 
@@ -69,12 +81,19 @@ class XattrSeriesAgent(Agent.TV_Shows):
         for i in media.seasons[s].episodes[e].items:
           for part in i.parts:
             Log("[SEARCH] %s | %s" % (s, e))
+
             file = part.file
+            Log("[FILE] %s" % file)
+
             attr = xattr_metadata(file)
+            Log("[XATTR] %s" % attr)
+
             if attr is None:
               continue
 
-            sid = thetvdb_series_id(attr)
+            sid = series_id(attr)
+            Log("[ID] %s" % mid)
+
             if sid is None:
               continue
 
@@ -87,12 +106,19 @@ class XattrSeriesAgent(Agent.TV_Shows):
         for i in media.seasons[s].episodes[e].items:
           for part in i.parts:
             Log("[UPDATE] %s | %s" % (s, e))
+
             file = part.file
+            Log("[FILE] %s" % file)
+
             attr = xattr_metadata(file)
+            Log("[XATTR] %s" % attr)
+
             if attr is None:
               return
 
-            sid = thetvdb_series_id(attr)
+            sid = series_id(attr)
+            Log("[ID] %s" % mid)
+
             if sid is None:
               continue
 
