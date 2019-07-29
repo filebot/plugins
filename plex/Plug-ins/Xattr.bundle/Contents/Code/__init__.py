@@ -92,7 +92,7 @@ class XattrSeriesAgent(Agent.TV_Shows):
               continue
 
             sid = series_id(attr)
-            Log("[ID] %s" % mid)
+            Log("[ID] %s" % sid)
 
             if sid is None:
               continue
@@ -117,7 +117,7 @@ class XattrSeriesAgent(Agent.TV_Shows):
               return
 
             sid = series_id(attr)
-            Log("[ID] %s" % mid)
+            Log("[ID] %s" % sid)
 
             if sid is None:
               continue
