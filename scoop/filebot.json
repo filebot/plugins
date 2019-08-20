@@ -6,6 +6,9 @@
 	"url": "https://get.filebot.net/filebot/FileBot_4.8.5/FileBot_4.8.5-portable.zip",
 	"hash": "e0fe1f435f43113991454f0784af2ceb6acc94846b3852d39375576bab40befa",
 	"bin": "filebot.exe",
+	"persist": [
+		"data"
+	],
 	"checkver": {
 		"url": "https://app.filebot.net/update.xml",
 		"xpath": "//version"
