@@ -11,7 +11,7 @@
 	],
 	"checkver": {
 		"url": "https://app.filebot.net/update.xml",
-		"xpath": "//version"
+		"re": "FileBot ([\\d.]+)"
 	},
 	"autoupdate": {
 		"url": "https://get.filebot.net/filebot/FileBot_$version/FileBot_$version-portable.zip",
