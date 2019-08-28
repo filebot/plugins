@@ -44,6 +44,11 @@
 if [ -n "$BASH_VERSION" ]; then
   # Enable programmable completion facilities when using bash (see [3])
   shopt -s progcomp
+
+  # Replace `compopt` with `noop` if we're using bash 3.* (e.g. macOS) 
+  if [ "$BASH_VERSION" "<" "4" ]; then
+    alias compopt=true
+  fi
 elif [ -n "$ZSH_VERSION" ]; then
   # Make alias a distinct command for completion purposes when using zsh (see [4])
   setopt COMPLETE_ALIASES
@@ -187,7 +192,7 @@ function _picocli_filebot() {
   esac
 
   if [[ "${CURR_WORD}" == -* ]]; then
-    COMPREPLY=( $(compgen -W "${FLAG_OPTS} ${ARG_OPTS}" -- ${CURR_WORD}) )
+    COMPREPLY=( $( compgen -W "${FLAG_OPTS} ${ARG_OPTS}" -- ${CURR_WORD} ) )
   else
     compopt -o filenames
     COMPREPLY=( $( compgen -f -- ${CURR_WORD} ) ) # files
