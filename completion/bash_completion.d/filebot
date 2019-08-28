@@ -45,7 +45,7 @@ if [ -n "$BASH_VERSION" ]; then
   # Enable programmable completion facilities when using bash (see [3])
   shopt -s progcomp
 
-  # Replace `compopt` with `noop` if we're using bash 3.* (e.g. macOS) 
+  # Replace `compopt` with `noop` if we're using bash 3.* (e.g. macOS)
   if [ "$BASH_VERSION" "<" "4" ]; then
     alias compopt=true
   fi
