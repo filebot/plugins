@@ -91,7 +91,7 @@ function _picocli_filebot() {
   PREV_WORD=${COMP_WORDS[COMP_CWORD-1]}
 
   COMMANDS=""
-  FLAG_OPTS="-rename -non-strict -get-subtitles -check -list -mediainfo -revert -extract -r -unixfs -no-xattr -no-history -clear-cache -clear-prefs -clear-history -version -help"
+  FLAG_OPTS="-rename -non-strict -get-subtitles -check -list -mediainfo -revert -extract -r -unixfs -no-xattr -no-probe -no-history -clear-cache -clear-prefs -clear-history -version -help"
   ARG_OPTS="--mode --db --order --action --conflict --filter --mapper --format --q --lang --output --encoding -script --def --file-filter -exec --log --log-file --license"
   mode_OPTION_ARGS="interactive" # --mode values
   db_OPTION_ARGS="TheTVDB AniDB TheMovieDB::TV TVmaze TheMovieDB OMDb AcoustID ID3 exif xattr file" # --db values
