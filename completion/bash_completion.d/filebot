@@ -92,7 +92,7 @@ function _picocli_filebot() {
 
   COMMANDS=""
   FLAG_OPTS="-rename -non-strict -get-subtitles -check -list -mediainfo -revert -extract -r -unixfs -no-xattr -no-probe -no-history -clear-cache -clear-prefs -clear-history -version -help"
-  ARG_OPTS="--mode --db --order --action --conflict --filter --mapper --format --q --lang --output --encoding -script --def --file-filter -exec --log --log-file --license"
+  ARG_OPTS="--mode --db --order --action --conflict --filter --mapper --format --q --lang --output --encoding -script --def --file-filter --apply -exec --log --log-file --license"
   mode_OPTION_ARGS="interactive" # --mode values
   db_OPTION_ARGS="TheTVDB AniDB TheMovieDB::TV TVmaze TheMovieDB OMDb AcoustID ID3 exif xattr file" # --db values
   order_OPTION_ARGS="Airdate DVD Absolute AbsoluteAirdate" # --order values
@@ -101,6 +101,7 @@ function _picocli_filebot() {
   lang_OPTION_ARGS="sq ar hy bg ca hr cs da nl en fi fr qc de el he hi hu is id it ja x-jat ko lv lt mk ms zh tw hk no fa pl pt pb ro ru sr sk sl es mx sv th tr uk vi" # --lang values
   encoding_OPTION_ARGS="UTF-8 Windows-1252" # --encoding values
   StringString_OPTION_ARGS="name=value" # --def values
+  apply_OPTION_ARGS="DATE METADATA IMPORT ARTWORK NFO URL SYNO QNAP" # --apply values
   log_OPTION_ARGS="OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL" # --log values
 
   compopt +o default
@@ -169,6 +170,10 @@ function _picocli_filebot() {
     --file-filter)
       compopt -o filenames
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${CURR_WORD} ) ) # *.groovy files
+      return $?
+      ;;
+    --apply)
+      COMPREPLY=( $( compgen -W "${apply_OPTION_ARGS}" -- ${CURR_WORD} ) )
       return $?
       ;;
     -exec)
