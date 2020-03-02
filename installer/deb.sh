@@ -13,7 +13,7 @@ fi
 echo "Use Repository: $REPO"
 
 # 0. Install pre-requisites
-sudo apt-get install --install-recommends -y dirmngr gnupg-curl
+sudo apt-get install --install-recommends -y dirmngr gnupg-curl apt-transport-https
 
 # 1. Import signing keys
 sudo apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
