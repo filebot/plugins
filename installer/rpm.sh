@@ -13,3 +13,6 @@ sudo dnf install mediainfo p7zip p7zip-plugins
 
 # 4. Install FileBot
 sudo dnf install filebot
+
+# 5. Test Run
+filebot -script fn:sysinfo

@@ -26,3 +26,6 @@ sudo apt-get update
 
 # 4. Install FileBot and its dependencies
 sudo apt-get install --install-recommends -y filebot
+
+# 5. Test Run
+filebot -script fn:sysinfo
