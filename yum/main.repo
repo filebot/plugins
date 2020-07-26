@@ -1,0 +1,8 @@
+[filebot]
+name=filebot
+baseurl=https://get.filebot.net/rpm/main/x86_64
+skip_if_unavailable=True
+gpgcheck=0
+gpgkey=https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub
+enabled=0
+enabled_metadata=1
