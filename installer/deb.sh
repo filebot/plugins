@@ -13,7 +13,7 @@ fi
 echo "Use Repository: $REPO"
 
 # 0. Install pre-requisites
-sudo apt-get install --install-recommends -y dirmngr gnupg-curl apt-transport-https
+sudo apt-get install --install-recommends dirmngr gnupg-curl apt-transport-https
 
 # 1. Import signing keys
 sudo apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
@@ -24,8 +24,8 @@ echo "$REPO" | sudo tee /etc/apt/sources.list.d/filebot.list
 # 3. Update package index
 sudo apt-get update
 
-# 4. Install FileBot and its dependencies
-sudo apt-get install --install-recommends -y filebot
+# 4. Install FileBot
+sudo apt-get install --install-recommends filebot
 
 # 5. Test Run
 filebot -script fn:sysinfo
