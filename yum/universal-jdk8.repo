@@ -1,8 +1,0 @@
-[filebot]
-name=filebot
-baseurl=https://get.filebot.net/rpm/universal-jdk8/noarch
-skip_if_unavailable=True
-gpgcheck=0
-gpgkey=https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub
-enabled=0
-enabled_metadata=1
