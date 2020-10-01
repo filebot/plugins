@@ -10,7 +10,7 @@ brew info || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 brew update && brew upgrade
 
 # 2. Install filebot package
-brew cask install filebot --force
+brew cask install filebot --force --no-quarantine
 
 # 3. Test Run
 filebot -script fn:sysinfo
