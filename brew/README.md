@@ -2,4 +2,4 @@
 ```sh
 brew cask install filebot --force --no-quarantine
 ```
-Please read [`brew cask install filebot`])(https://www.filebot.net/mac/brew.html) for details.
+Please read [`brew cask install filebot`](https://www.filebot.net/mac/brew.html) for details.

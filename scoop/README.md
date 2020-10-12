@@ -3,4 +3,4 @@
 scoop bucket add extras
 scoop install filebot
 ```
-Please read [`scoop install filebot`])(https://www.filebot.net/windows/scoop.html) for details.
+Please read [`scoop install filebot`](https://www.filebot.net/windows/scoop.html) for details.
