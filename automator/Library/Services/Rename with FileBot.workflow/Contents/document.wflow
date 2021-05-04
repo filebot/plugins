@@ -59,21 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string># Configuration
-CONFIG_OUTPUT="$HOME/Media"
-
-# Log Files
-CONFIG_LOG="$CONFIG_OUTPUT/.log/amc.log"
-CONFIG_EXCLUDES="$CONFIG_OUTPUT/.log/amc.excludes"
-
-# Execute FileBot
-/usr/local/bin/filebot -script fn:amc "$@" --output "$CONFIG_OUTPUT" --action duplicate --conflict index -non-strict --log-file "$CONFIG_LOG" --def excludeList="$CONFIG_EXCLUDES" unsorted=y music=y artwork=y -exec open -R {f} +
-
-# Display log file on error
-if [ $? -ne 0 ]; then
-	open "$CONFIG_LOG"
-fi
-</string>
+					<string>/usr/local/bin/filebot -rename -r "$@" --format "{plex.name}" -non-strict --log-file context-menu.log</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -98,7 +84,7 @@ fi
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>3CFB75DB-B811-4AC3-A5D3-B17E949F2EC3</string>
+				<string>5C5B38B6-5FE6-4C6C-A926-4211AAF9B686</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -108,9 +94,9 @@ fi
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>1BE9D024-4925-4579-ABB6-AC325E58BBF4</string>
+				<string>5B0940CE-42E8-4083-B4ED-D12DB64F61F4</string>
 				<key>UUID</key>
-				<string>ED719A09-57E9-4B25-9B02-809B0A203B8A</string>
+				<string>1E2BE12F-4B69-473E-8FE1-088C834350AF</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -183,12 +169,10 @@ fi
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>769.000000:705.000000</string>
+				<string>769.000000:305.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -204,8 +188,6 @@ fi
 		<dict/>
 		<key>applicationPaths</key>
 		<array/>
-		<key>backgroundColorName</key>
-		<string>blackColor</string>
 		<key>customImageFileData</key>
 		<data>
 		aWNucwAAHXxpYzEyAAAMV4lQTkcNChoKAAAADUlIRFIAAABAAAAAQAgGAAAA

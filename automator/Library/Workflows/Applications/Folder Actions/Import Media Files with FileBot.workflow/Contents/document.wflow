@@ -59,7 +59,21 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>/usr/local/bin/filebot -script fn:amc --output "$HOME/Media" --action duplicate --conflict index -non-strict --log-file "$HOME/Media/.amc.log" --def excludeList=".amc.excludes" unsorted=y music=y artwork=y "$@" -exec open -R {f} +</string>
+					<string># Configuration
+CONFIG_OUTPUT="$HOME/Media"
+
+# Log Files
+CONFIG_LOG="$CONFIG_OUTPUT/.log/amc.log"
+CONFIG_EXCLUDES="$CONFIG_OUTPUT/.log/amc.excludes"
+
+# Execute FileBot
+/usr/local/bin/filebot -script fn:amc "$@" --output "$CONFIG_OUTPUT" --action duplicate --conflict index -non-strict --log-file "$CONFIG_LOG" --def excludeList="$CONFIG_EXCLUDES" unsorted=y music=y artwork=y -exec open -R {f} +
+
+# Display log file on error
+if [ $? -ne 0 ]; then
+	open "$CONFIG_LOG"
+fi
+</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -84,7 +98,7 @@
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>501F9637-7146-41E8-958D-E1FAB3C6DABC</string>
+				<string>4B174346-E79E-4CE7-935F-CA9CDE31C14A</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -94,9 +108,9 @@
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>BE76312F-1956-431C-B21E-D5528ED97529</string>
+				<string>8614ED71-4AE2-4100-AF52-8823F524F717</string>
 				<key>UUID</key>
-				<string>D7458846-B8ED-44A1-9E97-91736B192F85</string>
+				<string>DDB67D63-695A-43E5-BA5F-A7ADE38A8E46</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -169,10 +183,12 @@
 						<string>4</string>
 					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>696.000000:252.000000</string>
+				<string>769.000000:709.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>

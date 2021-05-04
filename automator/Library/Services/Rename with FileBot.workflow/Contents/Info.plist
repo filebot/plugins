@@ -12,7 +12,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Send to FileBot</string>
+				<string>Rename with FileBot</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
