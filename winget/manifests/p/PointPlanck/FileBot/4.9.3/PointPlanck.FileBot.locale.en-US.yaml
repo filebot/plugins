@@ -5,6 +5,5 @@ Publisher: PointPlanck
 PackageName: FileBot
 License: Copyright © Point Planck Limited
 ShortDescription: The ultimate TV and Movie Renamer
-Homepage: https://www.filebot.net/
 ManifestType: defaultLocale
 ManifestVersion: 1.0.0
