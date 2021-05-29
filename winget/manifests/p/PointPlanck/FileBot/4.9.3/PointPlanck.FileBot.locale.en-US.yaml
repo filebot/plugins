@@ -6,13 +6,14 @@ PackageName: FileBot
 PackageUrl: https://www.filebot.net/
 License: Copyright © Point Planck Limited
 ShortDescription: The ultimate TV and Movie Renamer
-Moniker: filebot
 Tags:
-- Batch
-- Rename
-- Video
-- Plex
-- Kodi
-- Emby
+- rename
+- video
+- tool
+- plex
+- kodi
+- emby
+- terminal
+- utility
 ManifestType: defaultLocale
 ManifestVersion: 1.0.0

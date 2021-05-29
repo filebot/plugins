@@ -1,5 +1,7 @@
 PackageIdentifier: PointPlanck.FileBot
 PackageVersion: 4.9.3
+Commands:
+  - filebot
 Installers:
 - InstallerLocale: en-US
   Architecture: x64
