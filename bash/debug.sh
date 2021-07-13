@@ -9,6 +9,6 @@ printenv > /tmp/printenv.txt
 java -version > /tmp/java-version.txt 2>&1
 filebot -version > /tmp/filebot-version.txt 2>&1
 filebot -script fn:sysinfo > /tmp/filebot-sysinfo.txt 2>&1
-filebot -script fn:sysenv > /tmp/filebot-sysenv.txt 2>&1
+filebot -script fn:sysenv "$@" > /tmp/filebot-sysenv.txt 2>&1
 
 # TIP: use `tail /tmp/*.txt` to check log files
