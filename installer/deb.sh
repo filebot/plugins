@@ -3,7 +3,7 @@
 # print system information
 uname -a
 
-# use JDK 11  build for Debian Buster / Ubuntu 18.10 or higher, and JDK 8 build otherwise
+# use JDK 11 build for Debian Buster / Ubuntu 18.10 or higher, and JDK 8 build otherwise
 if apt-cache show openjfx --no-all-versions | grep "Version: 8"; then
 	REPO="deb [arch=all] https://get.filebot.net/deb/ universal-jdk8 main"
 else
@@ -24,8 +24,11 @@ echo "$REPO" | sudo tee /etc/apt/sources.list.d/filebot.list
 # 3. Update package index
 sudo apt-get update
 
-# 4. Install FileBot
+# 4. Install dependencies explicitly (otherwise apt-get autoremove may purge them)
+sudo apt-get install --install-recommends default-jre openjfx mediainfo libchromaprint-tools p7zip-full unrar
+
+# 5. Install FileBot
 sudo apt-get install --install-recommends filebot
 
-# 5. Test Run
+# 6. Test Run
 filebot -script fn:sysinfo
