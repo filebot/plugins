@@ -36,11 +36,13 @@ else
 	STATUS="FAILURE"
 fi
 
-echo "\`\`\`
-$STATUS | $(echo "$@")
+echo '```' >> "$MSG_FILE"
+echo "
+$STATUS | $@
 ----------------------------------------
 $(egrep "$GREP_LINES" "$LOG_FILE")
-\`\`\`" | head -c 2000 > "$MSG_FILE"
+" | head -c 1990 >> "$MSG_FILE"
+echo '```' >> "$MSG_FILE"
 
 # print raw message
 # cat "$MSG_FILE"
