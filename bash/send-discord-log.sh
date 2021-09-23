@@ -40,7 +40,7 @@ echo "\`\`\`
 $STATUS | $(echo "$@")
 ----------------------------------------
 $(egrep "$GREP_LINES" "$LOG_FILE")
-\`\`\`" >> "$MSG_FILE"
+\`\`\`" | head -c 2000 > "$MSG_FILE"
 
 # print raw message
 # cat "$MSG_FILE"
