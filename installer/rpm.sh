@@ -7,7 +7,7 @@ sudo dnf config-manager --add-repo https://raw.githubusercontent.com/filebot/plu
 sudo dnf config-manager --set-enabled filebot --dump
 
 # 3. Install dependencies
-sudo dnf install mediainfo
+sudo dnf install zenity mediainfo
 
 # 4. Install FileBot
 sudo dnf install filebot

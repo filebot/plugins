@@ -25,7 +25,7 @@ echo "$REPO" | sudo tee /etc/apt/sources.list.d/filebot.list
 sudo apt-get update
 
 # 4. Install dependencies explicitly (otherwise apt-get autoremove may purge them)
-sudo apt-get install --install-recommends default-jre openjfx mediainfo libchromaprint-tools p7zip-full unrar
+sudo apt-get install --install-recommends default-jre openjfx zenity mediainfo libchromaprint-tools p7zip-full unrar
 
 # 5. Install FileBot
 sudo apt-get install --install-recommends filebot
