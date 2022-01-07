@@ -165,17 +165,17 @@ function _picocli_filebot() {
       return $?
       ;;
     --filter)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
       return $?
       ;;
     --mapper)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
       return $?
       ;;
     --format)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
       return $?
       ;;
@@ -184,7 +184,7 @@ function _picocli_filebot() {
       return $?
       ;;
     --output)
-      compopt -o dirnames
+      compopt -o dirnames; local IFS=$'\n'
       COMPREPLY=( $( compgen -d -- ${curr_word} ) ) # directories
       return $?
       ;;
@@ -193,7 +193,7 @@ function _picocli_filebot() {
       return $?
       ;;
     -script)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
       return $?
       ;;
@@ -202,12 +202,12 @@ function _picocli_filebot() {
       return $?
       ;;
     --q)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
       return $?
       ;;
     --file-filter)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
       return $?
       ;;
@@ -224,12 +224,12 @@ function _picocli_filebot() {
       return $?
       ;;
     --log-file)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -f -- "${curr_word}" ) ) # files
       return $?
       ;;
     --license)
-      compopt -o filenames
+      compopt -o filenames; local IFS=$'\n'
       COMPREPLY=( $( compgen -X '!*.psm' -f -- ${curr_word} ) ) # *.psm files
       return $?
       ;;
@@ -237,16 +237,12 @@ function _picocli_filebot() {
 
   if [[ "${curr_word}" == -* ]]; then
     COMPREPLY=( $(compgen -W "${flag_opts} ${arg_opts}" -- "${curr_word}") )
-  else
-    local positionals=""
-    local currIndex
-    currIndex=$(currentPositionalIndex "filebot" "${arg_opts}" "${flag_opts}")
-    if (( currIndex >= 0 && currIndex <= 2147483647 )); then
-      compopt -o filenames
-      positionals=$( compgen -f -- "${curr_word}" ) # files
-    fi
-    COMPREPLY=( $(compgen -W "${commands} ${positionals}" -- "${curr_word}") )
+    return $?
   fi
+
+  compopt -o filenames; local IFS=$'\n'
+  COMPREPLY=( $( compgen -f -- "${curr_word}" ) ) # files
+  return $?
 }
 
 # Define a completion specification (a compspec) for the
