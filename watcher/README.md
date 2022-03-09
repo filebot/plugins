@@ -1,10 +1,10 @@
 # filebot-watcher
 
-e.g. Usage on Windows:
+e.g. [filebot-watcher.ps1](https://github.com/filebot/plugins/blob/master/watcher/filebot-watcher.ps1) usage on Windows:
 ```powershell
 .\filebot-watcher.ps1 X:\Input --output X:\Output
 ```
-e.g. Usage on Unix:
+e.g. [filebot-watcher.sh](https://github.com/filebot/plugins/blob/master/watcher/filebot-watcher.sh) usage on Linux and FreeBSD:
 ```bash
 ./filebot-watcher.sh /input --output /output
 ```
