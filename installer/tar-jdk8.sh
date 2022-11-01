@@ -16,11 +16,11 @@ echo "$PACKAGE_SHA256 *$PACKAGE_FILE" | sha256sum --check || exit 1
 # Extract *.tar.xz archive
 tar xvf "$PACKAGE_FILE"
 
-# Check if filebot.sh works
+# Check if /path/to/filebot.sh works
 "$PWD/filebot.sh" -version
 
-# Link filebot into the $PATH
+# [OPTIONAL] Link `filebot` into the $PATH
 sudo ln -sf "$PWD/filebot.sh" /usr/local/bin/filebot
 
-# Check if filebot works
+# [OPTIONAL] Check if the `filebot` command works
 filebot -script fn:sysinfo
