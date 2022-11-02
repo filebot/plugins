@@ -4,7 +4,9 @@ SETTLE_DOWN_TIME="300"
 SETTLE_DOWN_CHECK="5 seconds ago"
 
 
-inotifywait -m "$1" -e create -e moved_to -e modify --exclude '/[.@]' --format '%w%f' $INOTIFYWAIT_OPTS | stdbuf -oL uniq | while read -r FILE; do
+inotifywait --monitor "$1" --event create --event moved_to --event modify --exclude '/[.@]' --format '%w%f' $INOTIFYWAIT_OPTS | stdbuf -oL uniq | while read -r FILE; do
+	echo "[INOTIFY] $FILE"
+
 	# make sure to inform the user that we are waiting for things to settle down
 	echo "Waiting $SETTLE_DOWN_TIME seconds for changes to settle down..."
 
