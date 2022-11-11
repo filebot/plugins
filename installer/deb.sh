@@ -7,7 +7,7 @@ uname -a
 sudo apt-get install --install-recommends dirmngr gnupg-curl apt-transport-https
 
 # 1. Import signing keys
-sudo apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
+wget -O- "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub" | gpg --dearmor > filebot.gpg
 
 # 2. Add deb repository to sources.list
 echo "deb [arch=all] https://get.filebot.net/deb/ universal main" | sudo tee /etc/apt/sources.list.d/filebot.list
