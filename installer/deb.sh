@@ -10,7 +10,7 @@ sudo apt-get install -y --install-recommends dirmngr gnupg-curl apt-transport-ht
 curl -fsSL "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub" | sudo gpg --dearmor --output "/usr/share/keyrings/filebot.gpg"
 
 # 2. Add deb repository to sources.list
-echo "deb [signed-by=/usr/share/keyrings/filebot.gpg] https://get.filebot.net/deb/ universal main" | sudo tee "/etc/apt/sources.list.d/filebot.list"
+echo "deb [arch=all signed-by=/usr/share/keyrings/filebot.gpg] https://get.filebot.net/deb/ universal main" | sudo tee "/etc/apt/sources.list.d/filebot.list"
 
 # 3. Update package index
 sudo apt-get update
