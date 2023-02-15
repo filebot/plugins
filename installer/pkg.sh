@@ -1,14 +1,21 @@
 #!/bin/sh -xu
 
+
 VERSION=4.9.6
-ARCH=$(uname -m)
-URL="https://get.filebot.net/filebot/FileBot_${VERSION}/FileBot_${VERSION}_${ARCH}.pkg"
-PKG="${TMPDIR}FileBot_${ARCH}.pkg"
-APP="/Applications/FileBot.app"
+
+
+if [ $(uname -m) = arm64 ]; then
+	URL="https://get.filebot.net/filebot/FileBot_${VERSION}/FileBot_${VERSION}_arm64.pkg"
+else
+	URL="https://get.filebot.net/filebot/FileBot_${VERSION}/FileBot_${VERSION}_x64.pkg"
+fi
+
+PKG=${TMPDIR}$(basename $URL)
+APP=/Applications/FileBot.app
 
 
 function fetch {
-	curl --verbose --fail --location --output "$1" --time-cond "$1" --retry 5 "$2"
+	curl --verbose --fail --location --output "$1" --retry 5 "$2"
 }
 
 function verify {
