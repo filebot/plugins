@@ -1,8 +1,9 @@
 #!/bin/sh -xu
 
 VERSION=4.9.6
-URL="https://get.filebot.net/filebot/FileBot_$VERSION/FileBot_$VERSION.pkg"
-PKG="${TMPDIR}FileBot.pkg"
+ARCH=$(uname -m)
+URL="https://get.filebot.net/filebot/FileBot_${VERSION}/FileBot_${VERSION}_${ARCH}.pkg"
+PKG="${TMPDIR}FileBot_${ARCH}.pkg"
 APP="/Applications/FileBot.app"
 
 
