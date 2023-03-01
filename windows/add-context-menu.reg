@@ -2,7 +2,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\FileBotCommands]
 "MUIVerb"="FileBot"
-"SubCommands"="FileBotRenameMovie;FileBotRenameSeries;FileBotImportMedia"
+"SubCommands"="FileBotRenameMovie;FileBotRenameSeries;FileBotImportMedia;FileBotFetchSubtitles"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\FileBotCommands]
 "MUIVerb"="FileBot"
