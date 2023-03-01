@@ -2,43 +2,33 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\FileBotCommands]
 "MUIVerb"="FileBot"
-"SubCommands"="FileBot.Rename.Movie;FileBot.Rename.Series;FileBot.Rename.Anime"
+"SubCommands"="FileBotRenameMovie;FileBotRenameSeries;FileBotImportMedia"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\FileBotCommands]
 "MUIVerb"="FileBot"
-"SubCommands"="FileBot.Rename.Movie;FileBot.Rename.Series;FileBot.Rename.Anime;FileBot.Script.AMC;FileBot.Script.Artwork.Movie;FileBot.Script.Artwork.Series;FileBot.Script.Subtitles"
+"SubCommands"="FileBotRenameMovie;FileBotRenameSeries;FileBotImportMedia;FileBotFetchArtwork;FileBotFetchSubtitles"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Rename.Movie]
-@="Rename Movies"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Rename.Movie\command]
-@="cmd /c filebot -rename -r \"%1\" --db TheMovieDB --format \"{plex.name}\" -non-strict --log-file context.log"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotRenameMovie]
+@="Rename Movie"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotRenameMovie\command]
+@="cmd /c filebot -rename -r \"%1\" --db TheMovieDB -non-strict --format \"{plex.name}\" --apply reveal --log-file context.log"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Rename.Series]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotRenameSeries]
 @="Rename TV Series"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Rename.Series\command]
-@="cmd /c filebot -rename -r \"%1\" --db TheTVDB --format \"{plex.name}\" -non-strict --log-file context.log"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotRenameSeries\command]
+@="cmd /c filebot -rename -r \"%1\" --db TheMovieDB::TV -non-strict --format \"{plex.name}\" --apply reveal --log-file context.log"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Rename.Anime]
-@="Rename Anime"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Rename.Anime\command]
-@="cmd /c filebot -rename -r \"%1\" --db AniDB --format \"{plex.name}\" -non-strict --log-file context.log"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.AMC]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotImportMedia]
 @="Import to Video Library"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.AMC\command]
-@="cmd /c filebot -script fn:amc \"%1\" --output \"%%USERPROFILE%%\\Videos\" -non-strict --log-file context.log"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotImportMedia\command]
+@="cmd /c filebot -rename -r \"%1\" -non-strict --output \"%%USERPROFILE%%\\Videos\" --format \"{plex}\" --action duplicate --conflict auto --apply artwork cover nfo url reveal --log-file context.log"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.Artwork.Movie]
-@="Fetch Artwork for Movies"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.Artwork.Movie\command]
-@="cmd /c filebot -script fn:artwork.tmdb \"%1\" -non-strict --log-file context.log"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotFetchArtwork]
+@="Fetch Artwork"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotFetchArtwork\command]
+@="cmd /c filebot -mediainfo -r \"%1\" -non-strict --apply artwork cover nfo url --log-file context.log"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.Artwork.Series]
-@="Fetch Artwork for TV Series"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.Artwork.Series\command]
-@="cmd /c filebot -script fn:artwork.tvdb \"%1\" -non-strict --log-file context.log"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.Subtitles]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotFetchSubtitles]
 @="Fetch Subtitles"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBot.Script.Subtitles\command]
-@="cmd /c filebot -script fn:suball \"%1\" -non-strict --lang en --log-file context.log"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotFetchSubtitles\command]
+@="cmd /c filebot -get-subtitles -r \"%1\" -non-strict --lang English --log-file context.log"
