@@ -21,7 +21,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotImportMedia]
 @="Import to Video Library"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotImportMedia\command]
-@="cmd /c filebot -rename -r \"%1\" -non-strict --output \"%%USERPROFILE%%\\Videos\" --format \"{plex}\" --action duplicate --conflict auto --apply artwork cover nfo url reveal --log-file context.log"
+@="cmd /c filebot -rename -r \"%1\" -non-strict --output \"%%USERPROFILE%%\\Videos\" --format \"{plex}\" --action duplicate --conflict auto --apply reveal --log-file context.log"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\FileBotFetchArtwork]
 @="Fetch Artwork"
