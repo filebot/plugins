@@ -1,7 +1,7 @@
 #!/bin/sh -xu
 
 
-VERSION=4.9.6
+VERSION=5.0.0
 
 
 if [ $(uname -m) = arm64 ]; then
