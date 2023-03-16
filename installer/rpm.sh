@@ -5,19 +5,19 @@
 if dnf --version 2> /dev/null
 then
 	# 0. Install dnf config-manager
-	sudo dnf install 'dnf-command(config-manager)'
+	sudo dnf -y install 'dnf-command(config-manager)'
 
 	# 1. Add repository
-	sudo dnf config-manager --add-repo 'https://raw.githubusercontent.com/filebot/plugins/master/yum/main.repo'
+	sudo dnf -y config-manager --add-repo 'https://raw.githubusercontent.com/filebot/plugins/master/yum/main.repo'
 
 	# 2. Enable repository
-	sudo dnf config-manager --set-enabled filebot --dump
+	sudo dnf -y config-manager --set-enabled filebot --dump
 
 	# 3. Install dependencies
-	sudo dnf install zenity mediainfo
+	sudo dnf -y install zenity mediainfo
 
 	# 4. Install FileBot
-	sudo dnf install filebot
+	sudo dnf -y install filebot
 fi
 
 
@@ -25,13 +25,13 @@ fi
 if zypper --version 2> /dev/null
 then
 	# 1. Add repository
-	sudo zypper addrepo --enable --refresh --gpgcheck --check 'https://raw.githubusercontent.com/filebot/plugins/master/yum/main.repo'
+	sudo zypper --non-interactive addrepo --enable --refresh --gpgcheck --check 'https://raw.githubusercontent.com/filebot/plugins/master/yum/main.repo'
 
 	# 2. Install dependencies
-	sudo zypper install zenity mediainfo
+	sudo zypper --non-interactive install zenity mediainfo
 
 	# 3. Install FileBot
-	sudo zypper install filebot
+	sudo zypper --non-interactive install filebot
 fi
 
 
