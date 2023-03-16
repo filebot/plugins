@@ -4,6 +4,9 @@
 # Option A: Install FileBot via DNF
 if dnf --version 2> /dev/null
 then
+	# 0. Install dnf config-manager
+	sudo dnf install 'dnf-command(config-manager)'
+
 	# 1. Add repository
 	sudo dnf config-manager --add-repo 'https://raw.githubusercontent.com/filebot/plugins/master/yum/main.repo'
 
