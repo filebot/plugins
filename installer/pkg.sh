@@ -1,13 +1,13 @@
 #!/bin/sh -xu
 
 
-VERSION=5.0.0
+PACKAGE_VERSION=5.0.1
 
 
 if [ $(uname -m) = arm64 ]; then
-	URL="https://get.filebot.net/filebot/FileBot_${VERSION}/FileBot_${VERSION}_arm64.pkg"
+	URL="https://get.filebot.net/filebot/FileBot_${PACKAGE_VERSION}/FileBot_${PACKAGE_VERSION}_arm64.pkg"
 else
-	URL="https://get.filebot.net/filebot/FileBot_${VERSION}/FileBot_${VERSION}_x64.pkg"
+	URL="https://get.filebot.net/filebot/FileBot_${PACKAGE_VERSION}/FileBot_${PACKAGE_VERSION}_x64.pkg"
 fi
 
 PKG=${TMPDIR}$(basename $URL)
