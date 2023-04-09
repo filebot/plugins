@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
+<!--
+$ curl -L https://raw.githubusercontent.com/filebot/plugins/master/unraid/filebot-xpra.xml -o /boot/config/plugins/dockerMan/templates/filebot-xpra.xml
+-->
 <Container version="2">
-	<!-- /boot/config/plugins/dockerMan/templates-user/filebot-xpra.xml -->
 	<Name>filebot-xpra</Name>
 	<Repository>rednoah/filebot:xpra</Repository>
 	<Registry>https://hub.docker.com/r/rednoah/filebot/</Registry>

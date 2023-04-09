@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
+<!--
+$ curl -L https://raw.githubusercontent.com/filebot/plugins/master/unraid/filebot-node.xml -o /boot/config/plugins/dockerMan/templates/filebot-node.xml
+-->
 <Container version="2">
-	<!-- /boot/config/plugins/dockerMan/templates-user/filebot-node.xml -->
 	<Name>filebot-node</Name>
 	<Repository>rednoah/filebot:node</Repository>
 	<Registry>https://hub.docker.com/r/rednoah/filebot/</Registry>
