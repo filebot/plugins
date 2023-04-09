@@ -23,7 +23,7 @@ $ curl -L https://raw.githubusercontent.com/filebot/plugins/master/unraid/filebo
 	<DonateText/>
 	<DonateLink/>
 	<Requires/>
-	<Config Name="WebUI" Target="5454" Default="5454" Mode="tcp" Description="" Type="Port" Display="advanced" Required="true" Mask="false">5454</Config>
-	<Config Name="Application Data" Target="/data" Default="data" Mode="rw" Description="Named volume for internal application data files." Type="Path" Display="advanced" Required="true" Mask="false">data</Config>
-	<Config Name="User Files" Target="/volume1" Default="/mnt/user/Storage/" Mode="rw" Description="Bind mount that makes your files available via /volume1 from within the container." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/Storage/</Config>
+	<Config Name="User Files" Target="/volume1" Default="" Mode="rw" Description="Bind mount that makes your files available via /volume1 from within the container." Type="Path" Display="always" Required="false" Mask="false"></Config>
+	<Config Name="Application Data" Target="/data" Default="data" Mode="rw" Description="Named volume for internal application data files." Type="Path" Display="advanced" Required="false" Mask="false">data</Config>
+	<Config Name="WebUI" Target="5454" Default="" Mode="tcp" Description="" Type="Port" Display="advanced" Required="false" Mask="false">5454</Config>
 </Container>
