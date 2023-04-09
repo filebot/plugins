@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Container version="2">
+	<!-- /boot/config/plugins/dockerMan/templates-user/filebot-node.xml -->
+	<Name>filebot-node</Name>
+	<Repository>rednoah/filebot:node</Repository>
+	<Registry>https://hub.docker.com/r/rednoah/filebot/</Registry>
+	<Network>bridge</Network>
+	<MyIP/>
+	<Shell>sh</Shell>
+	<Privileged>false</Privileged>
+	<Support>https://www.filebot.net/linux/unraid.html</Support>
+	<Project>https://www.filebot.net/</Project>
+	<Overview>FileBot Node WebUI</Overview>
+	<Category>MediaApp:Video Status:Stable</Category>
+	<WebUI>http://[IP]:[PORT:5452]/</WebUI>
+	<TemplateURL/>
+	<Icon>https://app.filebot.net/icon.png</Icon>
+	<ExtraParams/>
+	<PostArgs/> 
+	<CPUset/>
+	<DonateText/>
+	<DonateLink/>
+	<Requires/>
+	<Config Name="WebUI" Target="5452" Default="5452" Mode="tcp" Description="" Type="Port" Display="advanced" Required="true" Mask="false">5452</Config>
+	<Config Name="Application Data" Target="/data" Default="data" Mode="rw" Description="Named volume for internal application data files." Type="Path" Display="advanced" Required="true" Mask="false">data</Config>
+	<Config Name="User Files" Target="/volume1" Default="/mnt/user/Storage/" Mode="rw" Description="Bind mount that makes your files available via /volume1 from within the container." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/Storage/</Config>
+</Container>
