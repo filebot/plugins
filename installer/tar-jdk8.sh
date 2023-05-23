@@ -1,6 +1,6 @@
 #!/bin/sh -xu
 
-PACKAGE_VERSION=5.0.2
+PACKAGE_VERSION=5.0.3
 PACKAGE_SHA256=$(curl -fsSL https://raw.githubusercontent.com/filebot/website/master/get.filebot.net/filebot/FileBot_$PACKAGE_VERSION/FileBot_$PACKAGE_VERSION-portable-jdk8.tar.xz.sha256)
 
 PACKAGE_FILE=FileBot_$PACKAGE_VERSION-portable-jdk8.tar.xz
