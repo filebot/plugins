@@ -135,7 +135,7 @@ function _picocli_filebot() {
 
   local commands=""
   local flag_opts="-rename -non-strict -get-subtitles -check -list -find -mediainfo -revert -extract -r -d -unixfs -no-xattr -no-probe -no-index -no-history -clear-cache -clear-prefs -clear-history -version -help"
-  local arg_opts="--mode --db --order --action --conflict --filter --mapper --format --lang --output --encoding -script --def --q --file-filter --apply -exec --log --log-file --license"
+  local arg_opts="--mode --db --order --action --conflict --filter --mapper --format --lang --output --encoding -script --def --q --file-filter --file-order --apply -exec --log --log-file --license"
   local mode_option_args="interactive" # --mode values
   local db_option_args="TheMovieDB::TV AniDB TheTVDB TVmaze TheMovieDB OMDb AcoustID ID3 exif xattr file" # --db values
   local order_option_args="Airdate DVD Absolute Digital Story Production Date" # --order values
@@ -219,6 +219,12 @@ function _picocli_filebot() {
       return $?
       ;;
     --file-filter)
+      local IFS=$'\n'
+      type compopt &>/dev/null && compopt -o filenames
+      COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
+      return $?
+      ;;
+    --file-order)
       local IFS=$'\n'
       type compopt &>/dev/null && compopt -o filenames
       COMPREPLY=( $( compgen -X '!*.groovy' -f -- ${curr_word} ) ) # *.groovy files
