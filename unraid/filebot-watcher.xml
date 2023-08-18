@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+$ curl -L https://raw.githubusercontent.com/filebot/plugins/master/unraid/filebot-watcher.xml -o /boot/config/plugins/dockerMan/templates/filebot-watcher.xml
+-->
+<Container version="2">
+	<Name>filebot-watcher</Name>
+	<Repository>rednoah/filebot:watcher</Repository>
+	<Registry>https://hub.docker.com/r/rednoah/filebot/</Registry>
+	<Network>bridge</Network>
+	<MyIP/>
+	<Shell>sh</Shell>
+	<Privileged>false</Privileged>
+	<Support>https://www.filebot.net/linux/unraid.html</Support>
+	<Project>https://www.filebot.net/</Project>
+	<Overview>FileBot Watcher</Overview>
+	<Category>MediaApp:Video Status:Stable</Category>
+	<TemplateURL/>
+	<Icon>https://app.filebot.net/icon.png</Icon>
+	<ExtraParams/>
+	<PostArgs>&quot;/volume1/&lt;input folder&gt;&quot; --output &quot;/volume1/&lt;output folder&gt;&quot;</PostArgs>
+	<CPUset/>
+	<DonateText/>
+	<DonateLink/>
+	<Requires/>
+	<Config Name="User Files" Target="/volume1" Default="" Mode="rw" Description="Bind mount that makes your files available via /volume1 from within the container." Type="Path" Display="always" Required="false" Mask="false"></Config>
+	<Config Name="Application Data" Target="/data" Default="" Mode="rw" Description="Named volume for internal application data files." Type="Path" Display="advanced" Required="false" Mask="false">data</Config>
+</Container>
