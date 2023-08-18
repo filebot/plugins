@@ -13,6 +13,7 @@ $ curl -L https://raw.githubusercontent.com/filebot/plugins/master/unraid/filebo
 	<Support>https://www.filebot.net/linux/unraid.html</Support>
 	<Project>https://www.filebot.net/</Project>
 	<Overview>FileBot Watcher</Overview>
+	<Requires>Switch to Advanced View the edit the command-line arguments</Requires>
 	<Category>MediaApp:Video Status:Stable</Category>
 	<TemplateURL/>
 	<Icon>https://app.filebot.net/icon.png</Icon>
