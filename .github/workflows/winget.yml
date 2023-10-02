@@ -1,7 +1,10 @@
 name: winget
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+  push:
+    paths:
+      - 'winget/**'
 
 jobs:
   publish:
@@ -12,4 +15,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Submit       
-        run: winget/make.ps1 --Submit
+        run: winget/make.ps1 --Submit --Token $env:WINGETCREATE_TOKEN
