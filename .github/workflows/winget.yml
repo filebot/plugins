@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'winget/**'
+      - 'winget/make.ps1'
 
 jobs:
   publish:
