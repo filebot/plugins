@@ -12,5 +12,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Submit       
-        run: ./make.ps1 --Submit
-        working-directory: ${{ github.workspace }}/winget
+        run: winget/make.ps1 --Submit
