@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'winget/make.ps1'
+      - '.github/workflows/winget.yml'
 
 jobs:
   publish:
@@ -14,5 +15,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Submit       
-        run: winget/make.ps1 --Submit --Token $env:WINGETCREATE_TOKEN
+      - name: Submit
+        run: |
+          Set-Location winget
+          ./make.ps1 --Submit --Token $env:WINGETCREATE_TOKEN
