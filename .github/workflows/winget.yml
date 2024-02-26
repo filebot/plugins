@@ -8,7 +8,15 @@ on:
       - '.github/workflows/winget.yml'
 
 jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh repo sync rednoah/winget-pkgs -b master
+        env:
+          GH_TOKEN: ${{ secrets.WINGETCREATE_TOKEN }}
+
   publish:
+    needs: repo-sync
     runs-on: windows-latest
     env:
       WINGETCREATE_TOKEN: ${{ secrets.WINGETCREATE_TOKEN }}
