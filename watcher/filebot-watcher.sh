@@ -5,10 +5,12 @@ SETTLE_DOWN_CHECK="5 seconds ago"
 
 
 inotifywait --monitor "$1" --event create --event moved_to --event modify --exclude '/[.@]' --format '%w%f' $INOTIFYWAIT_OPTS | stdbuf -oL uniq | while read -r FILE; do
+	TODAY="$(date '+%Y/%m/%d %H:%M:%S %Z')"
+
 	echo "[INOTIFY] $FILE"
 
 	# make sure to inform the user that we are waiting for things to settle down
-	echo "Waiting $SETTLE_DOWN_TIME seconds for changes to settle down..."
+	echo "[$TODAY] Waiting $SETTLE_DOWN_TIME seconds for changes to settle down..."
 
 	# file may yield inode/x-empty for new files
 	sleep "$SETTLE_DOWN_TIME"
@@ -17,7 +19,7 @@ inotifywait --monitor "$1" --event create --event moved_to --event modify --excl
 	RECENTLY_MODIFIED_FILES="$(find "$1" -type f -newermt "$SETTLE_DOWN_CHECK" -not -path '*/[.@]*' -print -quit)"
 
 	if [ -n "$RECENTLY_MODIFIED_FILES" ]; then
-		echo "$RECENTLY_MODIFIED_FILES was modified less than $SETTLE_DOWN_CHECK"
+		echo "[$TODAY] $RECENTLY_MODIFIED_FILES was modified less than $SETTLE_DOWN_CHECK"
 		echo "Processing deferred until next change..."
 		continue
 	fi
