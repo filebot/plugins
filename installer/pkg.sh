@@ -1,7 +1,7 @@
 #!/bin/sh -xu
 
 
-PACKAGE_VERSION=5.1.3
+PACKAGE_VERSION=5.1.4
 
 
 if [ $(uname -m) = arm64 ]; then
