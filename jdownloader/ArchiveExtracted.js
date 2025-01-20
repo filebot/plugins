@@ -13,7 +13,11 @@ function isReallyFinished() {
 }
 
 if (package && isReallyFinished()) {
-	var command = [script, package.getDownloadFolder(), package.getName(), package.getComment() ? package.getComment() : 'N/A', 'ARCHIVE_EXTRACTED']
+	var path = package.getDownloadFolder()
+	var name = package.getName()
+	var label = package.getComment() ? package.getComment() : 'N/A'
+
+	var command = [script, path, name, label, 'ARCHIVE_EXTRACTED']
 	log(command)
 	log(callSync(command))
 }
