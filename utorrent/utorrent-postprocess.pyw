@@ -14,10 +14,10 @@ output = 'X:/Media'
 
 
 # custom formats (use / instead of \ as directory separator)
-movieFormat  = '''{plex}'''
-seriesFormat = '''{plex}'''
-animeFormat  = '''{plex}'''
-musicFormat  = '''{plex}'''
+movieFormat  = '''{plex.id}'''
+seriesFormat = '''{plex.id}'''
+animeFormat  = '''{plex.id}'''
+musicFormat  = '''{plex.id}'''
 
 
 # required args
