@@ -9,12 +9,10 @@ ARG_LABEL="$3"
 CONFIG_OUTPUT="$HOME/Media"
 
 # Remote Command Configuration
-NODE_HOSTNAME="0.0.0.0"
-NODE_USERNAME="username"
-NODE_PASSWORD="password"
+NODE_HOST="username:password@172.17.0.1"
 
 
-curl --user "$NODE_USERNAME:$NODE_PASSWORD" "http://$NODE_HOSTNAME:5452/command" --data "
+curl "http://$NODE_HOST:5452/command" --data "
 -script
 fn:amc
 --output
