@@ -7,7 +7,7 @@ brew info || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebr
 brew update
 
 # 2. Install filebot package
-brew install filebot --force --no-quarantine
+brew install filebot --force
 
 # 3. Test Run
 filebot -script fn:sysinfo
