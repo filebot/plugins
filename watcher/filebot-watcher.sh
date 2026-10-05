@@ -4,7 +4,7 @@ SETTLE_DOWN_TIME="300"
 SETTLE_DOWN_CHECK="5 seconds ago"
 
 
-inotifywait --monitor "$1" --event create --event moved_to --event modify --exclude '/[.@]' --format '%w%f' $INOTIFYWAIT_OPTS | stdbuf -oL uniq | while read -r FILE; do
+inotifywait --monitor "$1" --event create --event moved_to --event close_write --exclude '/[.@]' --format '%w%f' $INOTIFYWAIT_OPTS | while read -r FILE; do
 	TODAY="$(date '+%Y/%m/%d %H:%M:%S %Z')"
 
 	echo "[INOTIFY] $FILE"
